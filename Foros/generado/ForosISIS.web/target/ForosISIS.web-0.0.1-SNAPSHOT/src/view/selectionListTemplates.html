@@ -1,0 +1,26 @@
+<script type="text/template" id="selectionList">
+    <div class="panel panel-default">
+        <h1><%= title %></h1>
+        <form id="addForm">
+            <!-- Default panel contents -->
+            <table class="table striped">
+
+            <% _.each(list, function(element) { %>
+            <tr>
+            <td><input id="selection" type="checkbox" name="selection" value="<%= element.get('id')%>" /></td>
+            <td><%= htmlEncode(element.get(name)) %></td>
+            </tr>
+            <% }); %>
+            </tbody>
+            </table>
+            <button id="addButton" type="button" class="btn btn-default"
+                onclick="Backbone.trigger('<%= componentId %>-selection-add',{}); return false"> 
+                <span class="glyphicon glyphicon-plus"></span> Add
+            </button>
+            <button id="cancelButton" type="button" class="btn btn-default"
+                onclick="Backbone.trigger('<%= componentId %>-selection-cancel',{}); return false"> 
+                <span class="glyphicon glyphicon-plus"></span> Cancel
+            </button>
+        </form>
+    </div>
+</script>

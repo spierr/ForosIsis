@@ -1,0 +1,9 @@
+{
+    "displayName" : "Coordinador",
+    "name" : "coordinador",
+    "templateName" : "coordinador",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/ForosISIS.web/webresources/Coordinador",
+    "el" : "#main"
+}

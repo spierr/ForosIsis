@@ -1,0 +1,54 @@
+<script type="text/template" id="foroList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>Name</th>
+		 <th>Tema</th>
+		 <th>Presupuesto</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(foros, function(foro) { %>
+    <tr>
+		<td><%= htmlEncode(foro.getDisplay('name')) %></td>
+		<td><%= htmlEncode(foro.getDisplay('tema')) %></td>
+		<td><%= htmlEncode(foro.getDisplay('presupuesto')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-foro-edit',{id:<%= foro.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-foro-delete',{id:<%= foro.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="foro">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-foroForm">
+    <% if(foro.id) {%>
+    <input type="hidden" name="id" value="<%= foro.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= foro.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="tema">Tema</label>
+    	<input type="text" class="form-control" id="tema" name="tema" placeholder="Enter value" value="<%= foro.get('tema') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="presupuesto">Presupuesto</label>
+    	<input type="text" class="form-control" id="presupuesto" name="presupuesto" placeholder="Enter value" value="<%= foro.get('presupuesto') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

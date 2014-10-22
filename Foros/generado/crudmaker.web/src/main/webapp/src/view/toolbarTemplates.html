@@ -1,0 +1,66 @@
+<script type="text/template" id="toolbar-template">
+    <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+    <% if(showTitle) { %>
+    <a class="navbar-brand" href="#">
+    <span class="glyphicon glyphicon-<%= icon %>"></span> <% if(title==''){ %><%= name%>
+    <% } else {%><%= title%><%}%>
+    </a>
+    <% }%>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+    <form class="navbar-form navbar-left" role="search">
+    <% if(showCreate) { %>
+    <button id="<%= componentId%>-createButton" type="button" class="btn btn-default"> 
+    <span class="glyphicon glyphicon-plus"></span> <%= createName%>
+    </button>
+    <% } %>
+    <% if(showSave) { %>
+    <button id="<%= componentId%>-saveButton" type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-floppy-disk"></span> <%= saveName%>
+    </button>
+    <% } %>
+    <% if(showCancel) { %>
+    <button id="<%= componentId%>-cancelButton" type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-remove-sign"></span> <%= cancelName%>
+    </button>
+    <% } %>
+    <% if(showRefresh) { %>                        
+    <button id="<%= componentId%>-refreshButton" type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-refresh"></span> <%= refreshName%>
+    </button>
+    <% } %>
+    <% if(showSearch) { %>                                                
+    <button id="<%= componentId%>-searchButton" type="button" class="btn btn-default">
+    <span class="glyphicon <%= searchIcon%>"></span> <%= searchName%>
+    </button>
+    <% } %>
+    <% if(showPrint) { %>                                                                        
+    <button id="<%= componentId%>-printButton" type="button" class="btn btn-default">
+    <span class="glyphicon <%= printIcon%>"></span> <%= printName%>
+    </button>
+    <% } %>       
+    <% if(showAddButton) { %>                                                                        
+    <button id="<%= componentId%>-addButton" type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-send"></span> <%= addName %>
+    </button>
+    <% } %>
+    <% for(var i=0;i<buttons.length;i++) if(buttons[i].show){ %>
+        
+    <button id="<%= componentId%>-button<%= buttons[i].id%>" type="button" class="btn btn-default"
+      onclick="Backbone.trigger('<%= componentId%>-toolbar-button<%= buttons[i].id%>',{}); return false">
+    <span class="glyphicon <%= buttons[i].icon%>"></span> <%= buttons[i].name%>
+    </button>
+    <% } %>
+    </form>                            
+</script>

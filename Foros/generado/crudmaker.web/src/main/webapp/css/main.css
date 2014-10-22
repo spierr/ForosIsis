@@ -1,0 +1,25 @@
+/* 
+    Document   : main
+    Created on : 30/07/2013, 03:13:02 PM
+    Author     : Daniel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.bgtransparent{
+	position:fixed;
+	left:0;
+	top:0;
+ 	background-color:#000;
+ 	opacity:0.6;
+ 	filter:alpha(opacity=60);
+}
+
+.bgmodal{
+	position:fixed; 
+	font-family:arial;
+	font-size:1em;
+	border:0.05em solid black;
+	overflow:auto;
+	background-color:#fff;
+}
