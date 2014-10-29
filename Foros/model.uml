@@ -157,4 +157,5 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Gnsvo0gDEeS5DIlKHX8BhQ" value="1"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_dOJbUF-tEeSBIrngIT0mVA" name="Double"/>
 </uml:Model>

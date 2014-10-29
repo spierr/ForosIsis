@@ -1,0 +1,9 @@
+{
+    "displayName" : "Foro",
+    "name" : "foro",
+    "templateName" : "foro",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/ForosISIS.web/webresources/Foro",
+    "el" : "#main"
+}

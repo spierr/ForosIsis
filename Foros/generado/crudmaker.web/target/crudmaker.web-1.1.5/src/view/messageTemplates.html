@@ -1,0 +1,18 @@
+<script type="text/template" id="message-template">
+    <div id="<%= componentId %>-message" class="alert alert-<%= type %>">
+    <% if(dismissable) {%>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <% } %>
+    <%=  htmlEncode( message ) %>
+    </div>
+    <% if(delay) {%>
+    <% print("<sc" + "ript type='text/javascript'>"); %>
+
+    setTimeout(function(d){
+    $('#<%= componentId %>-message').slideUp();
+    }, <%= delay %>*1000);
+
+    <% print("</sc"+"ript>"); %>
+    <% } %>
+
+</script>

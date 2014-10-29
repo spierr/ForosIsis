@@ -1,0 +1,31 @@
+<script type="text/template" id="tab-template">
+            <ul id="<%= componentId %>-tab" class="nav nav-tabs">
+            <% _.each(tabs, function(tab) { %>
+                <li class="<% if(tab.active) {%>active<%}%> <% if(tab.disabled) {%>disabled<%}%>" >
+                <a <%if(!tab.disabled){%> href="#<%= componentId %>-<%= htmlEncode(tab.name) %>" data-toggle="tab" <%}%> ><%= htmlEncode(tab.label) %></a></li>
+		<td></td>
+            <% }); %>                
+            </ul>
+            <div id="<%= componentId %>-tabTabContent" style="border-right: 1px lightgray solid; border-left: 1px lightgray solid;border-bottom: 1px lightgray solid;" class="tab-content">
+                <% _.each(tabs, function(tab) { %>
+                    <div class="tab-pane <% if(tab.active) {%>active<%} else{%> fade <%}%>" id="<%= componentId %>-<%= htmlEncode(tab.name) %>">
+
+                    </div>
+                <% }); %>                
+            </div>
+             <% print("<sc" + "ript type='text/javascript'>"); %>
+              $('#<%= componentId %>-tab a').each(function(){ 
+              console.log($(this));
+              var disabled = $(this).parent().hasClass('disabled');  
+              var self = this;
+              if(!disabled){
+              $(this).click(function (e) {
+                e.preventDefault();
+                 if(!disabled){
+                  $(self).tab('show');
+                }
+              });
+              }
+           });
+           <% print("</sc"+"ript>"); %>
+</script>

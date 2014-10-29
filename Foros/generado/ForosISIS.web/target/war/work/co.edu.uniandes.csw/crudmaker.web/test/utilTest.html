@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Pruebas utils.js</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.14.0.css"/>
+        
+        <script src="../js/vendor/jquery-1.9.1.js"></script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
+        <script src="../js/vendor/underscore-min.js"></script>
+        <script src="../js/vendor/backbone-min.js"></script>
+        <script src="../js/vendor/bootstrap-datepicker.js"></script>
+        
+        <script src="http://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+        
+        <script>
+            var App = App || {};
+        </script>
+        <script data-main="../src/utils" src="../js/vendor/require.js"></script>
+    </head>
+    <body>
+        <div id="qunit">
+            <div id="qunit-fixture">
+                <script type="application/javascript">
+                    test('prueba randomInteger', function(){
+                        var i=parseInt(App.Utils.randomInteger());
+                        ok(i>0 && i<1000,'Valor esperado 0..1000 y se obtuvo: '+i);
+                    });
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

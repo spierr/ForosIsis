@@ -1,0 +1,11 @@
+{
+    "displayName" : "Foro",
+    "name" : "foro",
+    "templateName" : "foro",
+    "url" : "foro.html",
+    "server": "localhost:8080",
+    "server": "localhost:8080",
+    "context": "/ForosISIS.web/webresources/ForoMaster",
+    
+    "el" : "#main"
+}

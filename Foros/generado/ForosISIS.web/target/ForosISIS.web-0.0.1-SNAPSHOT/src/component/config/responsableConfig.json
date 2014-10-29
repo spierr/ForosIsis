@@ -1,0 +1,9 @@
+{
+    "displayName" : "Responsable",
+    "name" : "responsable",
+    "templateName" : "responsable",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/ForosISIS.web/webresources/Responsable",
+    "el" : "#main"
+}
