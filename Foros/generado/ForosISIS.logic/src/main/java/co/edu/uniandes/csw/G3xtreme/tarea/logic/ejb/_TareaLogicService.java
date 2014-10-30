@@ -64,5 +64,6 @@ public abstract class _TareaLogicService implements _ITareaLogicService {
 
 	public void updateTarea(TareaDTO tarea){
 	    persistance.updateTarea(tarea); 
-	}	
+	}
+
 }
