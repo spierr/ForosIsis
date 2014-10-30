@@ -34,7 +34,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class _TareaPageDTO {
+public class _InfoPageDTO {
 
     private Long totalRecords;
 
