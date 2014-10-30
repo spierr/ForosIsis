@@ -38,7 +38,7 @@ public class _InfoPageDTO {
 
     private Long totalRecords;
 
-    private List<TareaDTO> records;
+    private List<InfoDTO> records;
 
     public Long getTotalRecords() {
 	return totalRecords;
@@ -48,11 +48,11 @@ public class _InfoPageDTO {
 	this.totalRecords = totalRecords;
     }
 
-    public List<TareaDTO> getRecords() {
+    public List<InfoDTO> getRecords() {
 	return records;
     }
 
-    public void setRecords(List<TareaDTO> records) {
+    public void setRecords(List<InfoDTO> records) {
 	this.records = records;
     }
 }
