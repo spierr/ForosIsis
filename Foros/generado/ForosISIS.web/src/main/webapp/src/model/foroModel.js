@@ -33,7 +33,16 @@ define(['model/_foroModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.tema){
+                validationMessage = "El tema no puede estar vacío";
+            }
+            if(!attrs.presupuesto){
+                validationMessage = "El presupuesto no puede estar vacío";
+            }
+            if(parseInt(attrs.presupuesto)<0){
+                validationMessage = "El presupuesto no puede ser negativo";
             }
             if(validationMessage.length>0){
                return validationMessage;

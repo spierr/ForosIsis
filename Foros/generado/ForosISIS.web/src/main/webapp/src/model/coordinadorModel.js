@@ -33,7 +33,10 @@ define(['model/_coordinadorModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío.";
+            }
+            if(!attrs.correo){
+                validationMessage = "El correo no puede estar vacío";
             }
             if(validationMessage.length>0){
                return validationMessage;

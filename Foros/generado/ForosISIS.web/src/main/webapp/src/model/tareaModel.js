@@ -33,7 +33,22 @@ define(['model/_tareaModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.responsable){
+                validationMessage = "El responsable no puede estar vacío";
+            }
+            if(!attrs.fechaInicio){
+                validationMessage = "La fecha de inicio no puede estar vacía";
+            }
+            if(!attrs.fechaFin){
+                validationMessage = "La fecha final no puede estar vacía";
+            }
+            if(!attrs.descripcion){
+                validationMessage = "La descripción no puede estar vacía";
+            }
+            if(!attrs.estado){
+                validationMessage = "El estado no puede estar vacío";
             }
             if(validationMessage.length>0){
                return validationMessage;

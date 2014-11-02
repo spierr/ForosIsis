@@ -33,7 +33,26 @@ define(['model/_actividadModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.descripcion){
+                validationMessage = "La descripción no puede estar vacía";
+            }
+            if(!attrs.hora){
+                validationMessage = "La hora no puede estar vacía";
+            }
+            if(!attrs.name){
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.costo){
+                validationMessage = "El costo no puede estar vacío";
+            }
+            if(parseInt(attrs.costo)<0)
+            {
+                validationMessage = "El costo no puede ser negativo";
+            }
+            if(!attrs.tema){
+                validationMessage = "El tema no puede estar vacío";
             }
             if(validationMessage.length>0){
                return validationMessage;
