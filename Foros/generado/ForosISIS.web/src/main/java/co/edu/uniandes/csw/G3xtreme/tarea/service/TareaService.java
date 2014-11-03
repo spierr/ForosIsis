@@ -64,6 +64,18 @@ public class TareaService extends _TareaService {
         }
         return super.getTareas(page, maxRecords);
     }
+    
+    @GET
+    
+    public TareaPageDTO getTareasResponsable(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+        //Implementar lógica de búsqueda
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        String responsable = queryParams.getFirst("responsable");
+        if (responsable != null && !responsable.isEmpty()) {
+            return tareaLogicService.getTareasPorResponsable(responsable);
+        }
+        return super.getTareas(page, maxRecords);
+    }
 
 
 }

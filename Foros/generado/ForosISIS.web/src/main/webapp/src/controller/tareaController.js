@@ -40,6 +40,18 @@ define(['controller/_tareaController','delegate/tareaDelegate'], function() {
             }, function (data) {
                 Backbone.trigger(self.componentId + '-' + 'error', {event: 'tarea-darTodas', view: self, id: '', data: data, error: 'Error en darTodasLasTareas'});
             });
+        },
+    darTareasPorResponsable: function (callback,context) {
+            var self = this;
+            var model = $('#' + this.componentId + '-tareaForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.UserDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'tarea-porResponsable', view: self, id: '', data: data, error: 'Error en darTareasPorResponsable'});
+            });
         }
         
 

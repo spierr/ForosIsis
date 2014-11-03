@@ -46,7 +46,11 @@ import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaPageDTO;
 public class TareaLogicService extends _TareaLogicService implements ITareaLogicService {
 
     public TareaPageDTO getTareasAll(String responsable) {
-         return persistance.getTareasAll(responsable);
+        return persistance.getTareasAll(responsable);
+    }
+
+    public TareaPageDTO getTareasPorResponsable(String responsable) {
+        return persistance.getTareasResponsable(responsable);
     }
     
 

@@ -41,6 +41,19 @@ define(['delegate/_tareaDelegate'], function() {
             }, this)).error(_.bind(function(data) {
                 callbackError(data);
             }, this));
+        },
+        darTodasLasTareas: function(user, callback, callbackError) {
+            console.log('Tareas por responsable: ');
+            $.ajax({
+                url: '/ForosIsis.web/webresources/Tarea/responsable/',
+                type: 'GET',
+                data: $.param(user.toJSON()),
+                contentType: 'application/json'
+            }).done(_.bind(function(data) {
+                callback(data);
+            }, this)).error(_.bind(function(data) {
+                callbackError(data);
+            }, this));
         } 
     });
 });

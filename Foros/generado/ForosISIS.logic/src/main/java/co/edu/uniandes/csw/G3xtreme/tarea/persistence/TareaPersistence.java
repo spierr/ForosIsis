@@ -56,4 +56,17 @@ public class TareaPersistence extends _TareaPersistence  implements ITareaPersis
         return response;
     }
 
+    public TareaPageDTO getTareasResponsable(String responsable) {
+    Query count = entityManager.createQuery("select count(u) from UserEntity u");
+        Long regCount = 0L;
+        regCount = Long.parseLong(count.getSingleResult().toString());
+        Query q = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.responsable like :responsable");
+        q.setParameter("responsable", "%"+responsable+"%");
+
+        TareaPageDTO response = new TareaPageDTO();
+        response.setTotalRecords(regCount);
+        response.setRecords(TareaConverter.entity2PersistenceDTOList(q.getResultList()));
+        return response;
+    }
+
 }

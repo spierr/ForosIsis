@@ -36,4 +36,6 @@ public interface ITareaPersistence extends _ITareaPersistence {
 
     public TareaPageDTO getTareasAll(String responsable);
 
+    public TareaPageDTO getTareasResponsable(String responsable);
+
 }
