@@ -38,10 +38,16 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.api.ITareaLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class TareaLogicService extends _TareaLogicService implements ITareaLogicService {
+
+    public TareaPageDTO getTareasAll(String responsable) {
+         return persistance.getTareasAll(responsable);
+    }
+    
 
 }
