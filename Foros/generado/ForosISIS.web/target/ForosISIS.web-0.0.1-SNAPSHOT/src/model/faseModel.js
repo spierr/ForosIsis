@@ -33,7 +33,13 @@ define(['model/_faseModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.fechaInicio){
+                validationMessage = "La fecha inicial no puede estar vacía";
+            }
+            if(!attrs.fechaFin){
+                validationMessage = "La fecha final no puede estar vacía";
             }
             if(validationMessage.length>0){
                return validationMessage;

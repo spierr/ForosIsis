@@ -56,7 +56,7 @@ public class TareaService extends _TareaService {
     @GET
     @Override
     public TareaPageDTO getTareas(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-        //Implementar lógica de búsqueda
+        //Implementar lï¿½gica de bï¿½squeda
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         String responsable = queryParams.getFirst("responsable");
         if (responsable != null && !responsable.isEmpty()) {
@@ -65,10 +65,10 @@ public class TareaService extends _TareaService {
         return super.getTareas(page, maxRecords);
     }
     
+    @Path("/ResponTarea")
     @GET
-    
     public TareaPageDTO getTareasResponsable(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-        //Implementar lógica de búsqueda
+        //Implementar lï¿½gica de bï¿½squeda
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         String responsable = queryParams.getFirst("responsable");
         if (responsable != null && !responsable.isEmpty()) {

@@ -33,7 +33,16 @@ define(['model/_diaModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.dia){
+                validationMessage = "El dia no puede estar vacío";
+            }
+            if(!attrs.costo){
+                validationMessage = "El costo no puede estar vacío";
+            }
+            if(parseInt(attrs.costo)<0){
+                validationMessage = "El costo no puede ser negativo";
             }
             if(validationMessage.length>0){
                return validationMessage;

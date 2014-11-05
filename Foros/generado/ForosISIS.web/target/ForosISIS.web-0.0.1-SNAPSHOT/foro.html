@@ -27,10 +27,16 @@
           <script src="../../assets/js/html5shiv.js"></script>
           <script src="../../assets/js/respond.min.js"></script>
         <![endif]-->
+        <script>
+            $(window).load(function (){
+               $(".container").css("height","350px").css("margin-top","20px");
+               console.log("changing again");
+            });
+        </script>
     </head>
     <body>
         <div class="container">
-            <div id="main" ></div>
+            <div id="main"></div>
         </div>
     </body>
 </html>

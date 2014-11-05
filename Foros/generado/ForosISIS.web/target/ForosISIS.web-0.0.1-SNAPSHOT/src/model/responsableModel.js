@@ -33,7 +33,13 @@ define(['model/_responsableModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.correo){
+                validationMessage = "El correo no puede estar vacío";
+            }
+            if(!attrs.tipo){
+                validationMessage = "El tipo no puede estar vacío";
             }
             if(validationMessage.length>0){
                return validationMessage;

@@ -47,6 +47,7 @@ public abstract class _TareaLogicService implements _ITareaLogicService {
     }
 
 	public List<TareaDTO> getTareas(){
+            System.out.println("Esta pasando");
 		return persistance.getTareas(); 
 	}
 
