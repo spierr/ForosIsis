@@ -36,7 +36,7 @@ define(['controller/_tareaController','delegate/tareaDelegate'], function() {
             var delegate = new App.Delegate.UserDelegate();
             delegate.search(self.currentModel, function (data) {
                 self.currentList.reset(data.records);
-                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght});
             }, function (data) {
                 Backbone.trigger(self.componentId + '-' + 'error', {event: 'tarea-darTodas', view: self, id: '', data: data, error: 'Error en darTodasLasTareas'});
             });
@@ -48,13 +48,23 @@ define(['controller/_tareaController','delegate/tareaDelegate'], function() {
             var delegate = new App.Delegate.UserDelegate();
             delegate.search(self.currentModel, function (data) {
                 self.currentList.reset(data.records);
-                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght});
             }, function (data) {
                 Backbone.trigger(self.componentId + '-' + 'error', {event: 'tarea-porResponsable', view: self, id: '', data: data, error: 'Error en darTareasPorResponsable'});
             });
+        },
+    actualizarTarea: function (callback,context) {
+            var self = this;
+            var model = $('#' + this.componentId + '-tareaForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.UserDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght});
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'tarea-actualizar', view: self, id: '', data: data, error: 'Cambiar el estado a la tarea'});
+            });
         }
-        
-
     });
     return App.Controller.TareaController;
 }); 

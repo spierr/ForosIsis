@@ -69,12 +69,26 @@ public class ForoService extends _ForoService {
         
         //TODO autenticar el usuario con la logica de la persistencia
         
+        
         if(usuario.equals("mpilar") && contrasena.equals("admin")){
             resp.setNumInt(0);
             resp.setExito("mpilar");
         }else{
             resp.setNumInt(-1);
         }
+        
+        return resp;
+    }
+    
+    @GET
+    @Path("/PedirForo")
+    public InfoDTO consultarForo(){
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+         
+        String identificador = queryParams.getFirst("id");
+        System.out.println("Pidiendo foro..." + identificador);
+
+        InfoDTO resp = new InfoDTO();
         
         return resp;
     }

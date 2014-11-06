@@ -33,7 +33,17 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.fase.logic.api.IFaseLogicService;
+import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
+import java.util.List;
 @Singleton
 public class FaseMockLogicService extends _FaseMockLogicService implements IFaseLogicService {
+
+    public FasePageDTO getFasesByForo(String idForo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Integer> getEstadoFasesForo(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

@@ -32,4 +32,6 @@ package co.edu.uniandes.csw.G3xtreme.expositor.logic.api;
 
 public interface IExpositorLogicService extends _IExpositorLogicService {
 
+//    public boolean enviarCorreo(Long id, String mensaje);
+
 }

@@ -44,4 +44,8 @@ import co.edu.uniandes.csw.G3xtreme.expositor.logic.api.IExpositorLogicService;
 @LocalBean
 public class ExpositorLogicService extends _ExpositorLogicService implements IExpositorLogicService {
 
+//    public boolean enviarCorreo(Long id, String mensaje) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+
 }
