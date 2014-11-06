@@ -27,7 +27,7 @@
                     url: "/ForosISIS.web/webresources/Tarea/getTareasForo",
                     type : "GET",
                     contentType: 'application/json',
-                    data : { idForo : idForo },
+                    data : { idForo : localStorage.getItem("idForo") },
                 }).done(function(data) {
                     //localStorage.setItem("titulo", data.titulo);
                     $.each(data, function(index,value){
@@ -50,7 +50,7 @@
                     url: "/ForosISIS.web/webresources/Tarea/getTareasForo",
                     type : "GET",
                     contentType: 'application/json',
-                    data : { idForo : idForo },
+                    data : { idForo : localStorage.getItem("idForo") },
                 }).done(function(data) {
                     //localStorage.setItem("titulo", data.titulo);
                     $.each(data, function(index,value){
@@ -78,7 +78,7 @@
         <div class="container" style="max-width: 2000px;">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Fase I</h3>
+                    <h3 class="panel-title">Tareas de la Fase</h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped" style="margin-bottom: 0;">

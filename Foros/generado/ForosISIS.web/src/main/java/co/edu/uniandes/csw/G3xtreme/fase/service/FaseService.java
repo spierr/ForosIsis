@@ -72,12 +72,12 @@ public class FaseService extends _FaseService {
         @Override
         @Path("/getFasesByForo")
         public FasePageDTO getFases(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-         //Implementar lógica de búsqueda
-         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-         String idForo = queryParams.getFirst("idForo");
-         System.out.println("el di es: " + idForo);
-        return faseLogicService.getFasesByForo(idForo);
-     }
+            //Implementar lógica de búsqueda
+            MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+            String idForo = queryParams.getFirst("idForo");
+            System.out.println("el di es: " + idForo);
+            return faseLogicService.getFasesByForo(idForo);
+        }
         
         @GET
         @Path("/getTareasPorFase")
