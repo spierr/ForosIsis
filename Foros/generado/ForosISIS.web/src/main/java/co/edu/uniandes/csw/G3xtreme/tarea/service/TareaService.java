@@ -95,11 +95,23 @@ public class TareaService extends _TareaService {
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         String idForo = queryParams.getFirst("id");
         
+        TareaDTO tarea1 = new TareaDTO();
+        tarea1.setDescripcion("descripcion 1");
+        tarea1.setName("nombresito");
         
+        TareaDTO tarea2 = new TareaDTO();
+        tarea2.setDescripcion("nueva descripcion");
+        tarea2.setName("otro nombre");
+        long id = 23;
+        tarea2.setResponsable("Sebastian Caldas");
+        tarea2.setResponsable_tareaId(id);
         
         ArrayList tareas = new ArrayList();
+        
+        tareas.add(tarea1);
+        tareas.add(tarea2);
         //agregue las TareasDTO al ArrayList anterior
-        return null;
+        return tareas;
     }
     
     //2
@@ -110,12 +122,12 @@ public class TareaService extends _TareaService {
         TareaDTO nueva = new TareaDTO();
         String descripcion = queryParams.getFirst("descripcion");
         String estado = queryParams.getFirst("estado");
-        String fechaInic = queryParams.getFirst("fechaInicial");
+        String fechaInic = queryParams.getFirst("fechaInicio");
         String fechaFin = queryParams.getFirst("fechaFin");
         //el id me imagino que se auto incrementa
-        String nombre = queryParams.getFirst("nombre");
-        String responsable = queryParams.getFirst("responsable_nombre");
-        String responsableId = queryParams.getFirst("responsable_id");
+        String nombre = queryParams.getFirst("name");
+        String responsable = queryParams.getFirst("responsable");
+        String responsableId = queryParams.getFirst("responsable_tareaId");
         String idForo = queryParams.getFirst("idForo");
         String numFase = queryParams.getFirst("numFase");
         

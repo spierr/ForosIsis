@@ -6,15 +6,6 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/datepicker.css">
-        <script>
-            loadComponents = [
-            {
-                    name: 'component/tareaComponent', 
-                    render: true,
-                    domElementId: 'main'
-            }
-            ];
-        </script>
         <script src="./js/vendor/jquery-1.9.1.js"></script>
         <script src="./js/vendor/bootstrap.min.js"></script>
         <script src="./js/vendor/underscore-min.js"></script>
@@ -26,6 +17,55 @@
                 $("#boton").click(function (){
                     $("#myModal").modal(); 
                 });
+                
+                
+                var idFaseActual = 0;
+                
+                //-------------------OBTENER FASES FORO
+                
+                $.ajax({
+                    url: "/ForosISIS.web/webresources/Tarea/getTareasForo",
+                    type : "GET",
+                    contentType: 'application/json',
+                    data : { idForo : idForo },
+                }).done(function(data) {
+                    //localStorage.setItem("titulo", data.titulo);
+                    $.each(data, function(index,value){
+                       var theTr = $("<tr>");
+                       $(theTr).append("<td>" + value.name + "</td>");
+                       $(theTr).append("<td>" + value.descripcion + "</td>");
+                       $(theTr).append("<td>" + value.estado + "</td>");
+                       $(theTr).append("<td>" + value.responsable + "</td>");
+                       $(theTr).append("<td><button class='btn btn-info notificar' value='" + value.responsable_tareaId + "'> Notificar Responsable</button></td>");
+                       $("#body-principal").append($(theTr));
+                    });
+                    
+                }, this).error(function(data) {
+                    alert("No se ha podido establecer la conexion con el servidor.");
+                }, this);
+                
+                //--------------------OBTENER TAREAS FASE FORO
+                
+                $.ajax({
+                    url: "/ForosISIS.web/webresources/Tarea/getTareasForo",
+                    type : "GET",
+                    contentType: 'application/json',
+                    data : { idForo : idForo },
+                }).done(function(data) {
+                    //localStorage.setItem("titulo", data.titulo);
+                    $.each(data, function(index,value){
+                       var theTr = $("<tr>");
+                       $(theTr).append("<td>" + value.name + "</td>");
+                       $(theTr).append("<td>" + value.descripcion + "</td>");
+                       $(theTr).append("<td>" + value.estado + "</td>");
+                       $(theTr).append("<td>" + value.responsable + "</td>");
+                       $(theTr).append("<td><button class='btn btn-info notificar' value='" + value.responsable_tareaId + "'> Notificar Responsable</button></td>");
+                       $("#body-principal").append($(theTr));
+                    });
+                    
+                }, this).error(function(data) {
+                    alert("No se ha podido establecer la conexion con el servidor.");
+                }, this);
             });
         </script>
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,10 +81,21 @@
                     <h3 class="panel-title">Fase I</h3>
                 </div>
                 <div class="panel-body">
-                    <div id="main" ></div>
+                    <table class="table table-striped" style="margin-bottom: 0;">
+                        <thead>
+                            <tr>	
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Estado</th>
+                                <th>Responsable</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-principal">	    
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <button class="btn btn-info" id="boton">Accion!</button>
         </div>
         
         

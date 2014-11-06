@@ -62,8 +62,9 @@
                             data : { id : idForo},
                         }).done(function(data) {
                             //localStorage.setItem("titulo", data.titulo);
-                            localStorage.setItem("titulo", idForo);
-                            localStorage.setItem("id_Foro", idForo);
+                            localStorage.setItem("titulo", data.name);
+                            localStorage.setItem("idForo", data.id);
+                            //console.log("Mostrando foro con id: " + data.id + " con titulo: " + data.name);
                             window.top.location = "/ForosISIS.web/index2.html";
                         }, this).error(function(data) {
                             alert("No se ha podido establecer la conexion con el servidor.");

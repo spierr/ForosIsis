@@ -34,6 +34,7 @@ import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.persistence.api.IFasePersistence;
 import co.edu.uniandes.csw.G3xtreme.fase.persistence.converter.FaseConverter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.persistence.Query;
@@ -48,15 +49,20 @@ public class FasePersistence extends _FasePersistence  implements IFasePersisten
     
     @SuppressWarnings("unchecked")
       public FasePageDTO getFasesByForo(String idForo) {
-          Query count = entityManager.createQuery("select count(u) from FaseEntity u");
-          Long regCount = 0L;
-          regCount = Long.parseLong(count.getSingleResult().toString());
-          Query q = entityManager.createQuery("SELECT u FROM FaseEntity u WHERE u.idForo like :idForo");
+        Query q = entityManager.createQuery("SELECT u FROM FaseEntity u, FOROFASE_FOROENTITY v "
+                  + "WHERE v.foroid = :idForo and u.ID = v.fase_foroId"); 
+          List r= q.getResultList();
+         
           q.setParameter("idForo", "%"+idForo+"%");
 
          FasePageDTO response = new FasePageDTO();
-         response.setTotalRecords(regCount);
          response.setRecords(FaseConverter.entity2PersistenceDTOList(q.getResultList()));
+         int count =0;
+         for (Iterator iterator = r.iterator(); iterator.hasNext();) {
+            Object next = iterator.next();
+            count++;
+        }
+         response.setTotalRecords((long)count);
          return response;
      }
 

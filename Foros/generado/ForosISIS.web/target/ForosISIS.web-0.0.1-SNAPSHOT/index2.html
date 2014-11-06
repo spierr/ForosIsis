@@ -59,6 +59,11 @@
                 }, this);
             }
             
+            function cambiarNumero(num){
+                console.log("Cambiando a fase numero:" + num)
+                localStorage.setItem("numFase", num)
+            }
+            
             $(document).ready(function (){
                 $('#side-menu').metisMenu(); 
                 $("#titulo-principal").text(localStorage.getItem("titulo"));
@@ -310,19 +315,19 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a class="active" href="#" onclick="redirectFrame('tarea.html'); return false;"><i class="fa fa-dashboard fa-fw"></i> Tareas</a>
+                            <a class="active" href="#" onclick="redirectFrame('tareas.html'); return false; "><i class="fa fa-dashboard fa-fw"></i> Tareas</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Fases<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#" onclick="redirectFrame('tareaFase.html?fase=1'); return false;">Fase I</a>
+                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(1); return false;">Fase I</a>
                                 </li>
                                 <li>
-                                    <a href="#">Fase II</a>
+                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(2); return false;">Fase II</a>
                                 </li>
                                 <li>
-                                    <a href="#">Fase III</a>
+                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(3); return false; ">Fase III</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
