@@ -34,11 +34,13 @@ and open the template in the editor.
         $(document).ready(function(){
            $("#enviar").click(function (){
                 var serialized = $("#form-login").serializeArray();
+                var reSerialized = $(".to-form").serializeArray();
+                
                 $.ajax({
                       url: "/ForosISIS.web/webresources/Foro/Login",
                       type : "GET",
                       contentType: 'application/json',
-                      data : serialized,
+                      data : reSerialized,
                       //data : $.param({ fase : "1" , numero : "dos"}),
                   }).done(function(data) {
                       console.log(data);
@@ -77,13 +79,13 @@ and open the template in the editor.
                         <h3 class="panel-title">Ingrese sus datos de usuario</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" id="form-login">
+                        <form role="form" id="form-login" onsubmit="return false">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="correo@uniandes.edu.co" name="email" type="text" autofocus>
+                                    <input class="form-control to-form" placeholder="correo@uniandes.edu.co" name="email" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Palabra clave" name="password" type="password" value="">
+                                    <input class="form-control to-form" placeholder="Palabra clave" name="password" type="password" value="">
                                 </div>
 <!--                                <div class="checkbox">
                                     <label>
