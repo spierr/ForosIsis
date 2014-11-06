@@ -35,5 +35,9 @@ import javax.inject.Singleton;
 import co.edu.uniandes.csw.G3xtreme.responsable.logic.api.IResponsableLogicService;
 @Singleton
 public class ResponsableMockLogicService extends _ResponsableMockLogicService implements IResponsableLogicService {
+
+    public boolean enviarCorreoAResponsable(String id, String idResp) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

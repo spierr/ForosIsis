@@ -60,19 +60,23 @@ public class ResponsableService extends _ResponsableService {
 
      public InfoDTO enviarCorreoAResponsable(@PathParam("id") long id)
      {
-//         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-//         String idResp = queryParams.getFirst("idFase");
-//          InfoDTO a = new InfoDTO();
-//          boolean resp= responsableLogicService.enviarCorreoAResponsable(id, idResp);
-//          a.setError(!resp);
-//          if (resp) {
-//             a.setExito("Se envió con éxito el mensaje.");
-//         }else 
-//          {
-//              a.setError("Error enviando el mensaje");
-//          }
-//          
-          return null;
+         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+         String idResp = queryParams.getFirst("idResponsable");
+         String mensaje = queryParams.getFirst("mensaje");
+          InfoDTO a = new InfoDTO();
+          try {
+              boolean resp= responsableLogicService.enviarCorreoAResponsable(mensaje, idResp);
+              a.setExito("Se envió con éxito el mensaje.");
+               a.setError(!resp);
+         } catch (Exception e) {
+             a.setError("Error enviando el mensaje");
+              a.setError(true);
+         }
+          
+         
+         
+          
+          return a;
      }
 
 }

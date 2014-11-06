@@ -32,4 +32,8 @@ package co.edu.uniandes.csw.G3xtreme.responsable.logic.api;
 
 public interface IResponsableLogicService extends _IResponsableLogicService {
 
+   
+    public boolean enviarCorreoAResponsable(String mensaje, String idResp) throws Exception;
+
+   
 }
