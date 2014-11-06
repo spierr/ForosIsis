@@ -36,6 +36,7 @@ import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
 import co.edu.uniandes.csw.G3xtreme.info.logic.dto.InfoDTO;
 import java.util.ArrayList;
 import co.edu.uniandes.csw.G3xtreme.info.logic.dto.InfoPageDTO;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -76,6 +77,19 @@ public class FaseService extends _FaseService {
         return faseLogicService.getFasesByForo(idForo);
      }
         
+        @GET
+        @Path("/getTareasPorFase")
+        public ArrayList<TareaDTO> getTareasPorFase(){
+             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+             String idForo = queryParams.getFirst("idForo");
+             String numFase = queryParams.getFirst("numFase");
+             
+             ArrayList resp = new ArrayList();
+             
+             //agregar a resp los TareaDTO
+             
+             return resp;
+        }
         
         public InfoDTO getEstadoFasesForo(@PathParam("id") Long id){
             //MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();

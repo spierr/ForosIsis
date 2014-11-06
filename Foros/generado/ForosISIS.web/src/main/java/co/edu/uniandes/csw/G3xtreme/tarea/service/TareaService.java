@@ -32,7 +32,9 @@ package co.edu.uniandes.csw.G3xtreme.tarea.service;
 
 import co.edu.uniandes.csw.G3xtreme.info.logic.dto.InfoDTO;
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.api.ITareaLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaPageDTO;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -84,6 +86,42 @@ public class TareaService extends _TareaService {
             return tareaLogicService.getTareasAll(responsable);
         }
         return super.getTareas(page, maxRecords);
+    }
+    
+    //1
+    @GET
+    @Path("/getTareasForo")
+    public ArrayList<TareaDTO> getTareasForo(){
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        String idForo = queryParams.getFirst("id");
+        
+        
+        
+        ArrayList tareas = new ArrayList();
+        //agregue las TareasDTO al ArrayList anterior
+        return null;
+    }
+    
+    //2
+    @GET
+    @Path("/crearTarea")
+    public InfoDTO crearTareaFaseForo(){
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        TareaDTO nueva = new TareaDTO();
+        String descripcion = queryParams.getFirst("descripcion");
+        String estado = queryParams.getFirst("estado");
+        String fechaInic = queryParams.getFirst("fechaInicial");
+        String fechaFin = queryParams.getFirst("fechaFin");
+        //el id me imagino que se auto incrementa
+        String nombre = queryParams.getFirst("nombre");
+        String responsable = queryParams.getFirst("responsable_nombre");
+        String responsableId = queryParams.getFirst("responsable_id");
+        String idForo = queryParams.getFirst("idForo");
+        String numFase = queryParams.getFirst("numFase");
+        
+        //retornar en el InfoDTO si se pudo o no
+        
+        return null;
     }
     
     
