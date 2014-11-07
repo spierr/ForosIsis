@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Foros  Vistos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/datepicker.css">
+        <script>
+            loadComponents = [
+            {
+                    name: 'component/foroMasterComponent', 
+                    render: true,
+                    domElementId: 'main'
+            }
+            ];
+        </script>
+        <script src="./js/vendor/jquery-1.9.1.js"></script>
+        <script src="./js/vendor/bootstrap.min.js"></script>
+        <script src="./js/vendor/underscore-min.js"></script>
+        <script src="./js/vendor/backbone-min.js"></script>
+        <script src="./js/vendor/backbone.paginator.min.js"></script>
+        <script src="./js/vendor/bootstrap-datepicker.js"></script>
+        <script data-main="src/main" src="./js/vendor/require.js"></script>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="../../assets/js/html5shiv.js"></script>
+          <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+        <script>
+            $(window).load(function (){
+               $(".container").css("height","350px").css("margin-top","20px");
+               console.log("say nadaa");
+               
+               function cargarBotones(){
+                   console.log("Cargando botones");
+                    $("tr").each(function(index){
+                        if(index == 0){
+                            $(this).append("<th>Foro</th>");
+                        }else{
+                            
+                            //Lo siguiente es culpa de BackBone!! :\
+                            var newTr = $("td");
+                            
+                            var people = $(this).children();
+                            var obj = $(people[3]).children()[0];
+                            var stringer = $(obj).attr("onclick");
+                            var finale = parseInt(stringer.substring(stringer.indexOf("{") + 5,stringer.indexOf("}") - 1));
+                            
+                            $(this).append("<td><button class='btn btn-info ver-foro' value='" + finale + "'>Ver Foro</button></td>");
+                        }
+                    });
+                    $(".ver-foro").click(function (){
+                        event.preventDefault();
+                        
+                        var idForo = this.value;
+                        
+                        $.ajax({
+                            url: "/ForosISIS.web/webresources/Foro/PedirForo",
+                            type : "GET",
+                            contentType: 'application/json',
+                            data : { id : idForo},
+                        }).done(function(data) {
+                            //localStorage.setItem("titulo", data.titulo);
+                            localStorage.setItem("titulo", data.name);
+                            localStorage.setItem("idForo", data.id);
+                            //console.log("Mostrando foro con id: " + data.id + " con titulo: " + data.name);
+                            window.top.location = "/ForosISIS.web/index2.html";
+                        }, this).error(function(data) {
+                            alert("No se ha podido establecer la conexion con el servidor.");
+                        }, this);
+                        
+                        //mostrar ventana de cargando foro
+                        
+                        //localStorage con el id del foro
+                        //localStorage con el titulo del foro
+                        
+                        //reenviar a index2
+                    });
+                       //Hay problemas cuando se presionan los botones
+//                    $(".btn").click(function (){
+//                        var will = $(this).attr("class");
+//                        if(will.indexOf("ver-foro") === -1 && will.indexOf("")){
+//                            cargarBotones();
+//                        }
+//                    });
+               }         
+               
+                setTimeout(function() {
+                    cargarBotones();
+                }, 800);
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="main"></div>
+        </div>
+    </body>
+</html> 

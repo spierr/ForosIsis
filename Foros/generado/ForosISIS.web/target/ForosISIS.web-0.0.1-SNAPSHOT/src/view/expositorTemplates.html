@@ -1,0 +1,17 @@
+<script type="text/template" id="expositor">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-expositorForm">
+    <% if(expositor.id) {%>
+    <input type="hidden" name="id" value="<%= expositor.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= expositor.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="costo">Costo</label>
+    	<input type="text" class="form-control" id="costo" name="costo" placeholder="Enter value" value="<%= expositor.get('costo') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

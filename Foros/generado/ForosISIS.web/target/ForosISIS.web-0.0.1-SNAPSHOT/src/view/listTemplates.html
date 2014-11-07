@@ -1,0 +1,67 @@
+<script type="text/template" id="list-template">
+    <div class="panel panel-default">
+	<!-- Default panel contents -->
+	<form id="<%= name %>List">
+	    <table class="table table-striped" style="margin-bottom: 0;">
+		<thead>
+		    <tr>
+		    <% if(select){ %>
+			<th>
+			    Check
+			</th>
+		    <% } %>
+			<% for(col in columns){ %>
+			    <th><%= htmlEncode(columns[col].displayName) %></th>
+			<% } %>
+
+			<%if( actions.length > 0 ){%>
+			    <th>Actions</th>
+			<% } %>
+		    </tr>
+		</thead>
+		<tbody>
+		    <% _.each(data, function(item) { %>
+		    <tr>
+		    <% if(select){ %>
+			<td>
+			<% var check = _.find(selectedItems,function(i){return i[idField] === item[idField]})?true:false; %>
+			    <input type="checkbox" <%= check?'checked':'' %> onclick="Backbone.trigger('<%= componentId %>-<%= name %>-select',{id: <%= item[idField] %>, isChecked: checked });">
+			</td>
+		    <% } %>
+			<% for( col in columns) { %>
+			    <td>
+			    <% if(item.get(columns[col].name)){ %>
+				<%= htmlEncode(item.getDisplay(columns[col].name)) %>
+			    <% } %>
+			    </td>
+			<% } %>
+			<td>
+			    <% _.each(actions, function(action){ %>
+                                <% if(action.get('show')){ %>
+				<a class="btn btn-xs" onclick="Backbone.trigger('<%= componentId %>-<%= name %>-<%= action.get('name') %>', {id: <%= item.id %> }); return false" ><%= action.get('displayName') %></a>
+			    <% }}); %>
+			</td>
+		    </tr>
+		    <% }); %>
+		</tbody>
+	    </table>
+	</form>
+    </div>
+    <% if(pagination){ %>
+	<div class="text-center">
+	    <ul class="pagination">
+		<% if(page > 3){ %>
+		    <li><a href="#" onclick="Backbone.trigger('<%= componentId %>-<%= name %>-changePage',{page: 1})">1</a></li>
+		    <li class="disabled"><a>...</a></li>
+		<% } %>
+		<% for(var i = -2; i < 3; i++) if(page+i > 0 && page+i <= pages){ %>
+		    <li <%= i==0?'class="active"':''%> ><a onclick="Backbone.trigger('<%= componentId %>-<%= name %>-changePage',{page: <%= page+i %>})" href="#"><%= page+i %></a></li>
+		<% } %>
+		<% if(page < pages-2){ %>
+		    <li class="disabled"><a>...</a></li>    
+		    <li><a href="#" onclick="Backbone.trigger('<%= componentId %>-<%= name %>-changePage',{page: <%= pages %>})"><%= pages %></a></li>
+		<% } %>
+	    </ul>
+	</div>
+    <% } %>
+</script>

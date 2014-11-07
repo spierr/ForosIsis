@@ -1,0 +1,91 @@
+<script type="text/template" id="toolbar-list-template">
+    <nav class="navbar navbar-default" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-tb-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	    </button>
+	    <% if(showTitle) { %>
+		<a class="navbar-brand" href="#">
+		    <span class="glyphicon glyphicon-<%= icon %>"></span> 
+		    <% if(title==''){ %>
+			<%= name%>
+		    <% } else {%>
+			<%= title%>
+		    <%}%>
+		</a>
+	    <% }%>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="navbar-tb-collapse">
+	    <form class="navbar-form navbar-left" role="search">
+		<% _.each(menus, function(menu){ %>
+		    <% if(menu.get('show')){ %>
+			<% _.each(menu.get('buttons'), function(btn){ %>
+			    <% if(btn.get('show')){ %>
+				<button id="<%= componentId%>-button-<%= btn.get('name')%>" type="button" class="btn btn-default"
+				    onclick="Backbone.trigger('<%= componentId %>-toolbar-button-<%= btn.get('name')%>',{}); return false">
+				    <span class="glyphicon <%= btn.get('icon')%>"></span> <%= btn.get('displayName')%>
+				</button>
+			    <% } %>
+			<% }); %>
+		    <% }%>
+		<% }); %>
+	    </form>
+	</div>
+    </nav>
+</script>
+
+<script type="text/template" id="toolbar-dropdown-template">
+    <nav class="navbar navbar-default" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-tb-collapse">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	    </button>
+	    <% if(showTitle) { %>
+		<a class="navbar-brand" href="#">
+		    <span class="glyphicon glyphicon-<%= icon %>"></span> 
+		    <% if(title==''){ %>
+			<%= name%>
+		    <% } else {%>
+			<%= title%>
+		    <%}%>
+		</a>
+	    <% }%>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="navbar-tb-collapse">
+	    <ul class="nav navbar-nav">
+		<% _.each(menus, function(menu){ %>
+		    <% if(menu.get('show')){ %>
+			<li class="dropdown">
+			    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				<%= menu.get('displayName') %> <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu" role="menu" style="width: auto;">
+				<% _.each(menu.get('buttons'), function(btn){ %>
+				    <% if(btn.get('show')){ %>
+					<li id="<%= componentId%>-button-<%= btn.get('name')%>">
+					    <a href="#" class='btn'
+					    onclick="Backbone.trigger('<%= componentId %>-toolbar-button-<%= btn.get('name')%>',{}); return false">
+					    <span class="glyphicon <%= btn.get('icon')%>"></span><%= btn.get('displayName')%></a>
+					</li>
+				    <% } %>
+				<% }); %>
+			    </ul>
+			</li>
+		    <% } %>
+		<% }); %>
+	    </ul>
+	</div>
+    </nav>
+</script>

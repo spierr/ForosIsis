@@ -61,23 +61,9 @@ public class FaseService extends _FaseService {
         @Context
         UriInfo uriInfo;
         
-        @GET
-        @Path("estado")
-        public List getEstadosFaseforo(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords){
-		//return faseLogicService.getFases(page, maxRecords);
-            return null;
-	}
+       
         
-        @GET
-        @Override
-        @Path("/getFasesByForo")
-        public FasePageDTO getFases(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-            //Implementar lógica de búsqueda
-            MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-            String idForo = queryParams.getFirst("idForo");
-            System.out.println("el di es: " + idForo);
-            return faseLogicService.getFasesByForo(idForo);
-        }
+       
         
         @GET
         @Path("/getTareasPorFase")
@@ -93,14 +79,5 @@ public class FaseService extends _FaseService {
              return resp;
         }
         
-        public InfoDTO getEstadoFasesForo(@PathParam("id") Long id){
-            //MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-            //System.out.println("Llega1");
-            List<Integer> resp = faseLogicService.getEstadoFasesForo(id);
-            //System.out.println(uriInfo.getPathParameters());
-            InfoDTO r= new InfoDTO();
-            r.setListaComas(resp.toString());
-            return r;
-           
-        }
+      
 }

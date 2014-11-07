@@ -1,0 +1,9 @@
+{
+    "displayName" : "Actividad",
+    "name" : "actividad",
+    "templateName" : "actividad",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/ForosISIS.web/webresources/Actividad",
+    "el" : "#main"
+}
