@@ -1,9 +1,0 @@
-{
-    "displayName" : "Expositor",
-    "name" : "expositor",
-    "templateName" : "expositor",
-    "url" : "user.html",
-    "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Expositor",
-    "el" : "#main"
-}

@@ -1,9 +1,0 @@
-{
-    "displayName" : "Tarea",
-    "name" : "tarea",
-    "templateName" : "tarea",
-    "url" : "user.html",
-    "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Tarea",
-    "el" : "#main"
-}

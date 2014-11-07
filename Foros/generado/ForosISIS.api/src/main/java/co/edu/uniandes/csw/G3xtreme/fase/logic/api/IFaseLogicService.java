@@ -38,7 +38,9 @@ public interface IFaseLogicService extends _IFaseLogicService {
 
     public List<Integer> getEstadoFasesForo(Long id);
 
-
     public FasePageDTO getFasesByForo(String idForo);
+
+
+   
 
 }

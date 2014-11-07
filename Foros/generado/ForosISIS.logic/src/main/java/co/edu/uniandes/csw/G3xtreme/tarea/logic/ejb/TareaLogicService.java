@@ -39,6 +39,7 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.api.ITareaLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaPageDTO;
 
 @Default
@@ -62,5 +63,9 @@ public class TareaLogicService extends _TareaLogicService implements ITareaLogic
 
      public InfoDTO updateEstadoTarea(long id, String idTarea, String valor) {
         return persistance.updateEstadoTarea(id,idTarea,valor);
+    }
+
+    public TareaDTO crearTarea(TareaDTO nueva, String idFase) {
+         return persistance.creartarea(nueva,idFase); //To change body of generated methods, choose Tools | Templates.
     }
 }

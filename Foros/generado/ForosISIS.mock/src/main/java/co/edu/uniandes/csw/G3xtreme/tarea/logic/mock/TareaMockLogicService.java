@@ -34,6 +34,7 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.api.ITareaLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaPageDTO;
 @Singleton
 public class TareaMockLogicService extends _TareaMockLogicService implements ITareaLogicService {
@@ -53,6 +54,10 @@ public class TareaMockLogicService extends _TareaMockLogicService implements ITa
   
 
     public InfoDTO updateEstadoTarea(long id, String idTarea, String valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public TareaDTO crearTarea(TareaDTO nueva, String idFase) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	
