@@ -107,7 +107,7 @@ public class FasePersistenceTest {
 		for(int i=0;i<3;i++){
 			FaseEntity entity=new FaseEntity();
 			entity.setName(generateRandom(String.class));
-			entity.setEstado(generateRandom(Boolean.class));
+			entity.setEstado(generateRandom(Integer.class));
 			entity.setFechaInicio(generateRandom(Date.class));
 			entity.setFechaFin(generateRandom(Date.class));
 			em.persist(entity);
@@ -119,7 +119,7 @@ public class FasePersistenceTest {
 	public void createFaseTest(){
 		FaseDTO dto=new FaseDTO();
 		dto.setName(generateRandom(String.class));
-		dto.setEstado(generateRandom(Boolean.class));
+		dto.setEstado(generateRandom(Integer.class));
 dto.setFechaInicio(generateRandomDate());
 dto.setFechaFin(generateRandomDate());
 		
@@ -175,7 +175,7 @@ Assert.assertEquals(parseDate(dto.getFechaFin()), entity.getFechaFin());
 		FaseDTO dto=new FaseDTO();
 		dto.setId(entity.getId());
 		dto.setName(generateRandom(String.class));
-		dto.setEstado(generateRandom(Boolean.class));
+		dto.setEstado(generateRandom(Integer.class));
 dto.setFechaInicio(generateRandomDate());
 dto.setFechaFin(generateRandomDate());
 		

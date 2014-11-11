@@ -45,7 +45,7 @@ public abstract class _FaseEntity {
 	@GeneratedValue(generator = "Fase")
 	private Long id;
 	private String name;
-	private Boolean estado;
+	private Integer estado;
 	@Temporal(TemporalType.DATE)
 	private Date fechaInicio;
 	@Temporal(TemporalType.DATE)
@@ -65,11 +65,11 @@ public abstract class _FaseEntity {
 	public void setName(String name){
 		this.name = name;
 	}
-	public Boolean getEstado(){
+	public Integer getEstado(){
 		return estado;
 	}
 	
-	public void setEstado(Boolean estado){
+	public void setEstado(Integer estado){
 		this.estado = estado;
 	}
 	public Date getFechaInicio(){

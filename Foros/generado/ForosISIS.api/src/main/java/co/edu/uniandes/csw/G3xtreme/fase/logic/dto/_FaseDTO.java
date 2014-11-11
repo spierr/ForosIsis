@@ -45,7 +45,7 @@ public abstract class _FaseDTO {
 	private String name;
 	
 
-	private Boolean estado;
+	private Integer estado;
 	
 
 	private String fechaInicio;
@@ -73,11 +73,11 @@ public abstract class _FaseDTO {
 	}
 
 
-	public Boolean getEstado() {
+	public Integer getEstado() {
 		return estado;
 	}
  
-	public void setEstado(Boolean estado) {
+	public void setEstado(Integer estado) {
 		this.estado = estado;
 	}
 

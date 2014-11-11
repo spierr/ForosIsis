@@ -104,7 +104,7 @@ public class FaseLogicServiceTest {
 		for(int i=0;i<3;i++){
 			FaseDTO pdto=new FaseDTO();
 			pdto.setName(generateRandom(String.class));
-			pdto.setEstado(generateRandom(Boolean.class));
+			pdto.setEstado(generateRandom(Integer.class));
 			pdto.setFechaInicio(generateRandomDate());
 			pdto.setFechaFin(generateRandomDate());
 			pdto=fasePersistence.createFase(pdto);
@@ -116,7 +116,7 @@ public class FaseLogicServiceTest {
 	public void createFaseTest(){
 		FaseDTO ldto=new FaseDTO();
 		ldto.setName(generateRandom(String.class));
-		ldto.setEstado(generateRandom(Boolean.class));
+		ldto.setEstado(generateRandom(Integer.class));
 		ldto.setFechaInicio(generateRandomDate());
 		ldto.setFechaFin(generateRandomDate());
 		
@@ -175,7 +175,7 @@ public class FaseLogicServiceTest {
 		FaseDTO ldto=new FaseDTO();
 		ldto.setId(pdto.getId());
 		ldto.setName(generateRandom(String.class));
-		ldto.setEstado(generateRandom(Boolean.class));
+		ldto.setEstado(generateRandom(Integer.class));
 		ldto.setFechaInicio(generateRandomDate());
 		ldto.setFechaFin(generateRandomDate());
 		
