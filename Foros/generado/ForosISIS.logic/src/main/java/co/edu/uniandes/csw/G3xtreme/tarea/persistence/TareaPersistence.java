@@ -93,7 +93,7 @@ public class TareaPersistence extends _TareaPersistence  implements ITareaPersis
          response.setRecords(TareaConverter.entity2PersistenceDTOList(r));
          int count =0;
          for (Iterator iterator = r.iterator(); iterator.hasNext();) {
-            Object next = iterator.next();
+            iterator.next();
             count++;
         }
          response.setTotalRecords((long)count);
