@@ -61,10 +61,10 @@ public class TareaPersistence extends _TareaPersistence  implements ITareaPersis
     }
 
     public TareaPageDTO getTareasResponsable(String responsable) {
-    Query count = entityManager.createQuery("select count(u) from UserEntity u");
+    Query count = entityManager.createQuery("select count(u) from TAREAENTITY u");
         Long regCount = 0L;
         regCount = Long.parseLong(count.getSingleResult().toString());
-        Query q = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.responsable like :responsable");
+        Query q = entityManager.createQuery("SELECT u FROM TAREAENTITY u WHERE u.responsable like :responsable");
         q.setParameter("responsable", "%"+responsable+"%");
 
         TareaPageDTO response = new TareaPageDTO();
@@ -75,7 +75,7 @@ public class TareaPersistence extends _TareaPersistence  implements ITareaPersis
 
     public InfoDTO updateEstadoTarea(long id, String idTarea, String valor)
     {
-        Query q = entityManager.createQuery("SELECT u FROM TareaEntity u WHERE u.idTarea like :idTarea");
+        Query q = entityManager.createQuery("SELECT u FROM TAREAENTITY u WHERE u.idTarea like :idTarea");
         q.setParameter("idTarea", "%"+idTarea+"%");
         InfoDTO r= new InfoDTO();
         r.setExito("Se pudo");
