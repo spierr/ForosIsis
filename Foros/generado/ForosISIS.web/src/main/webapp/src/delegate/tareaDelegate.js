@@ -42,10 +42,10 @@ define(['delegate/_tareaDelegate'], function() {
                 callbackError(data);
             }, this));
         },
-        darTodasLasTareasPorResponsable: function(user, callback, callbackError) {
-            console.log('Tareas por responsable: ');
+        darTodasLasTareasPorFase: function(user, callback, callbackError) {
+            console.log('Tareas por fase: ');
             $.ajax({
-                url: '/ForosIsis.web/webresources/Tarea/responsable/',
+                url: '/ForosIsis.web/webresources/Tarea/fase/',
                 type: 'GET',
                 data: $.param(user.toJSON()),
                 contentType: 'application/json'
