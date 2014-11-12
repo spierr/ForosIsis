@@ -85,7 +85,7 @@ public class TareaPersistence extends _TareaPersistence  implements ITareaPersis
     public TareaPageDTO getTareasByFase(String idFase) {
     
           Query q = entityManager.createQuery("select a, b from  FASETAREA_FASEENTITY as a, TAREAENTITY as b "+
-           "where  b.ID = a.tarea_faseId and a.tarea_faseId = :idFase");
+           "where  b.ID = a.TAREA_FASEID and a.TAREA_FASEID = :idFase");
            q.setParameter("idFase", "%"+idFase+"%");
            List r= q.getResultList();
           
