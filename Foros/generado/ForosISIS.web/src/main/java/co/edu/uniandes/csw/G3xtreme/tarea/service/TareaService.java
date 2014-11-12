@@ -68,7 +68,7 @@ public class TareaService extends _TareaService {
     public TareaPageDTO darTareasPorFase(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
         //Implementar l�gica de b�squeda
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-        String idFase = queryParams.getFirst("idFase");
+        String idFase = queryParams.getFirst("id");
         if (idFase  != null && !idFase.isEmpty()) {
             return tareaLogicService.getTareasByFase(idFase);
         }
