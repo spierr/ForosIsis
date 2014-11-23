@@ -41,4 +41,6 @@ import javax.ejb.LocalBean;
 @LocalBean
 public class DiaPersistence extends _DiaPersistence  implements IDiaPersistence {
 
+    
+
 }

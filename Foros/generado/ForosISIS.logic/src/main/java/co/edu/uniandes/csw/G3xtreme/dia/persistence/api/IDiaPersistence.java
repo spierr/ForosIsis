@@ -32,4 +32,6 @@ package co.edu.uniandes.csw.G3xtreme.dia.persistence.api;
 
 public interface IDiaPersistence extends _IDiaPersistence {
 
+  
+
 }

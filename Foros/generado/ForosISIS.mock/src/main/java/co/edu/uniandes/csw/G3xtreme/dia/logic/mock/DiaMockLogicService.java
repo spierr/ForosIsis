@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.dia.logic.api.IDiaLogicService;
+import co.edu.uniandes.csw.G3xtreme.dia.logic.dto.DiaPageDTO;
 @Singleton
 public class DiaMockLogicService extends _DiaMockLogicService implements IDiaLogicService {
+
+    public DiaPageDTO getDiasByForo(String idForo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
