@@ -33,6 +33,10 @@
           <script src="../../assets/js/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript">
+            localStorage.setItem("titulo", "FOROS-ISIS");
+            localStorage.setItem("idForo", 1);
+            
+            
             function redirectFrame(url) {
                 $('#container').attr('src', url);
                 $('#container').css('height', ($(window).height() - $('#header').height() - 30) + 'px');
@@ -334,6 +338,9 @@
                         </li>
                         <li>
                             <a class="active" href="#" onclick="redirectFrame('responsable.html'); return false;"><i class="fa fa-dashboard fa-fw"></i> Responsables</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="redirectFrame('dias.html'); return false;"><i class="fa fa-dashboard fa-fw"></i> Dias</a>
                         </li>
                         <li>
                             <a href="#" onclick="redirectFrame('consultasForm.html'); return false;"><i class="fa fa-edit fa-fw"></i> Ver Consultas</a>

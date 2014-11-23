@@ -32,12 +32,14 @@ package co.edu.uniandes.csw.G3xtreme.foro.service;
 
 import co.edu.uniandes.csw.G3xtreme.dia.logic.dto.DiaPageDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
+import co.edu.uniandes.csw.G3xtreme.foro.logic.api.IForoLogicService;
 import co.edu.uniandes.csw.G3xtreme.foro.logic.dto.ForoDTO;
 import co.edu.uniandes.csw.G3xtreme.info.logic.dto.InfoDTO;
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -56,6 +58,9 @@ import javax.ws.rs.core.UriInfo;
 @Produces(MediaType.APPLICATION_JSON)
 public class ForoService extends _ForoService {
 
+    @Inject
+    protected IForoLogicService foroLogicService;
+    
     @Context
     UriInfo uriInfo;
     
@@ -63,56 +68,58 @@ public class ForoService extends _ForoService {
     @Path("/Login")
     public InfoDTO hacerLogin(){
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-        
+
         System.out.println("Autenticando usuario...");
         String usuario = queryParams.getFirst("email");
         String contrasena = queryParams.getFirst("password");
-        
+
         System.out.println(usuario + ":" + contrasena);
         InfoDTO resp = new InfoDTO();
-        
+
         //TODO autenticar el usuario con la logica de la persistencia
-        
-        
+
+
         if(usuario.equals("mpilar") && contrasena.equals("admin")){
             resp.setNumInt(0);
             resp.setExito("mpilar");
         }else{
             resp.setNumInt(-1);
         }
-        
+
         return resp;
     }
-    
+
     @GET
     @Path("/PedirForo")
     public ForoDTO consultarForo(){
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-         
+
         String identificador = queryParams.getFirst("id");
         long id = Long.parseLong(identificador);
         System.out.println("Pidiendo foro..." + id);
 
         return foroLogicService.getForo(id);
     }
-    
-        @GET
-        @Path("/getFasesByForo")
-        public FasePageDTO getFasesByForo(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-            //Implementar lógica de búsqueda
-            MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-            String idForo = queryParams.getFirst("idForo");
-            System.out.println("el di es: " + idForo);
-            return foroLogicService.getFasesByForo(idForo, page, maxRecords);
-        }
+
+    @GET
+    @Path("/getFasesByForo")
+    public FasePageDTO getFasesByForo(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+        //Implementar lógica de búsqueda
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        String idForo = queryParams.getFirst("idForo");
+        System.out.println("el di es: " + idForo);
+        return foroLogicService.getFasesByForo(idForo, page, maxRecords);
+    }
+
+    @GET
+    @Path("/getDiasByForo")
+    public DiaPageDTO getDiasByForo() {
+        //Implementar lógica de búsqueda
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        String idForo = queryParams.getFirst("idForo");
+        //String idForo= "Hoola";
+        System.out.println("el di es: " + idForo);
         
-        @GET
-        @Path("/getDiasByForo")
-        public DiaPageDTO getDiasByForo(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-            //Implementar lógica de búsqueda
-            MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-            String idForo = queryParams.getFirst("idForo");
-            System.out.println("el di es: " + idForo);
-            return foroLogicService.getDiasByForo(idForo, page, maxRecords);
-        }
+        return foroLogicService.getDiasByForo(idForo);
+    }
 }

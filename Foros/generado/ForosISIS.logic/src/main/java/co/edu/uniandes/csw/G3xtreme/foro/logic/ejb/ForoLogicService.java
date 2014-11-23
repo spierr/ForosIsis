@@ -52,8 +52,8 @@ public class ForoLogicService extends _ForoLogicService implements IForoLogicSer
              return persistance.getFasesByForo(idForo, page, maxRecords); 
     }
 
-    public DiaPageDTO getDiasByForo(String idForo, Integer page, Integer maxRecords) {
-    return persistance.getDiasByForo(idForo, page, maxRecords);    
+    public DiaPageDTO getDiasByForo(String idForo) {
+        return persistance.getDiasByForo(idForo);    
     }
 
 }

@@ -37,6 +37,6 @@ public interface IForoPersistence extends _IForoPersistence {
 
     public FasePageDTO getFasesByForo(String idForo, Integer page, Integer maxRecords);
 
-    public DiaPageDTO getDiasByForo(String idForo, Integer page, Integer maxRecords);
+    public DiaPageDTO getDiasByForo(String idForo);
 
 }

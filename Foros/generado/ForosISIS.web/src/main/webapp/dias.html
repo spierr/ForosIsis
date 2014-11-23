@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tareas</title>
+        <title>Dias</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -22,103 +22,22 @@
             $(document).ready(function (){
                 var idForo = localStorage.getItem("idForo");
                 
-                $.ajax({
-                    url: "/ForosISIS.web/webresources/Tarea/getTareasForo",
-                    type : "GET",
-                    contentType: 'application/json',
-                    data : { idForo : idForo },
-                }).done(function(data) {
-                    //localStorage.setItem("titulo", data.titulo);
-                    $.each(data, function(index,value){
-                       var theTr = $("<tr>");
-                       $(theTr).append("<td>" + value.name + "</td>");
-                       $(theTr).append("<td>" + value.descripcion + "</td>");
-                       $(theTr).append("<td>" + value.estado + "</td>");
-                       $(theTr).append("<td>" + value.responsable + "</td>");
-                       $(theTr).append("<td><button class='btn btn-info notificar' value='" + value.responsable_tareaId + "'> Notificar Responsable</button></td>");
-                       $("#body-principal").append($(theTr));
-                    });
-                    
-                    $(".notificar").click(function (){
-                        var idNotificante = this.value;
-                        console.log("notificando");
-                        $.ajax({
-                             url: "/ForosISIS.web/webresources/Responsable/enviarCorreo",
-                             type : "GET",
-                             contentType: 'application/json',
-                             data : { mensaje : 'como vas con tu tarea?', idResponsable : idNotificante },
-                         }).done(function(data) {
-                             //localStorage.setItem("titulo", data.titulo);
-                             alert("Correo enviado!");
-                         }, this).error(function(data) {
-                             alert("No se ha podido establecer la conexion con el servidor.");
-                         }, this);
-                    });
-                    
-                }, this).error(function(data) {
-                    alert("No se ha podido establecer la conexion con el servidor.");
-                }, this);
-                
-                //------------------------GET ALL RESPONSABLES
-                
-                $.ajax({
-                    url: "/ForosISIS.web/webresources/Responsable/getAllResponsables",
-                    type : "GET",
-                    contentType: 'application/json',
-                }).done(function(data) {
-                    var theSelect = $("#responsableSelect");
-                    $.each(data.records, function(index,value){
-                       var option = $("<option>").attr("value",value.id).text(value.name);
-                       $(theSelect).append($(option));
-                       
-                });
-                    
-                //-----------------------GET FASES BY FORO
-                
-                $.ajax({
-                    url: "/ForosISIS.web/webresources/Fase/getFasesByForo",
-                    type : "GET",
-                    contentType: 'application/json',
-                    data : {idForo : localStorage.getItem("idForo")}
-                }).done(function(data) {
-                    var theSelect = $("#faseSelect");
-                    $.each(data.records, function(index,value){
-                       var option = $("<option>").attr("value",value.id).text(value.name);
-                       $(theSelect).append($(option));
-                       
-                    });
-                });
-                
-                //faseSelect
-                    
-                }, this).error(function(data) {
-                    alert("No se ha podido establecer la conexion con el servidor.");
-                }, this);
-                
-                
-                //responsableSelect
-                
-                $("#crear").click(function (){
-                   $("#myModal").modal();
-                });
-                
-                $("#btnCrearTarea").click(function(){
-                    var losDatos = $("#tareaForm").serializeArray();
-                    var idFor = localStorage.getItem("idForo");
-                    losDatos.push({idForo : idFor});
-                    
-                    
                     $.ajax({
-                        url: "/ForosISIS.web/webresources/Tarea/crearTarea",
+                        url: "/ForosISIS.web/webresources/Foro/getDiasByForo",
                         type : "GET",
                         contentType: 'application/json',
                         data : { idForo : idForo },
                     }).done(function(data) {
                         //localStorage.setItem("titulo", data.titulo);
-                        alert("Se ha creado una nueva tarea");
-                        window.top.location = "/ForosISIS.web/index2.html";
+                        
+                        $.each(data, function(index,value){
+                            var theTr = $("<tr>");
+                            $(theTr).append("<td>" + value.fecha + "</td>");
+                            $(theTr).append("<td>" + value.costo + "</td>");
+                            $(theTr).append("<td><button class='btn btn-info notificar' value='" + value.responsable_tareaId + "'> Ver Actividades</button></td>");
+                            $("#body-principal").append($(theTr));
+                         });
                     });
-                });
             });
         </script>
     </head>
@@ -128,17 +47,14 @@
             
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Tareas del Foro</h3>
+                  <h3 class="panel-title">Dias del Foro</h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-striped" style="margin-bottom: 0;">
                         <thead>
                             <tr>	
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Estado</th>
-                                <th>Responsable</th>
-                                <th>Acciones</th>
+                                <th>Fecha</th>
+                                <th>Costo</th>
                             </tr>
                         </thead>
                         <tbody id="body-principal">	    

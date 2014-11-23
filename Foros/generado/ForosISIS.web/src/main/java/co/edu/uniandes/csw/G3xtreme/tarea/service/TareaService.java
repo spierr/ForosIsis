@@ -101,6 +101,7 @@ public class TareaService extends _TareaService {
         String fechaInic = queryParams.getFirst("fechaInicio");
         String fechaFin = queryParams.getFirst("fechaFin");
         //el id me imagino que se auto incrementa
+        String identificador = queryParams.getFirst("id");
         String nombre = queryParams.getFirst("name");
         String responsable = queryParams.getFirst("responsable");
         String responsableId = queryParams.getFirst("responsable_tareaId");
@@ -112,8 +113,7 @@ public class TareaService extends _TareaService {
         nueva.setName(nombre);
         nueva.setResponsable(responsable);
         nueva.setResponsable_tareaId(Long.parseLong(responsableId));
-        
-        
+        nueva.setId(Long.parseLong(identificador));
         
         //retornar en el InfoDTO si se pudo o no
         

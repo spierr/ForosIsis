@@ -69,7 +69,7 @@ public class ForoPersistence extends _ForoPersistence  implements IForoPersisten
         return resp;
     }
 
-    public DiaPageDTO getDiasByForo(String idForo, Integer page, Integer maxRecords) {
+    public DiaPageDTO getDiasByForo(String idForo) {
         String query = "select * from DIAENTITY where FORODIA_FOROENTITY.foroid = "+idForo+" and FORODIA_FOROENTITY.dia_foroId = DIAENTITY.ID";
         Query q = entityManager.createNativeQuery(query);
         List<Object[]> lista = q.getResultList();

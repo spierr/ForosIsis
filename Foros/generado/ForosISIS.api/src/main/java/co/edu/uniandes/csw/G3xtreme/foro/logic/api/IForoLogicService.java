@@ -35,11 +35,8 @@ import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
 
 public interface IForoLogicService extends _IForoLogicService {
 
-   
     public FasePageDTO getFasesByForo(String idForo, Integer page, Integer maxRecords);
 
-    public DiaPageDTO getDiasByForo(String idForo, Integer page, Integer maxRecords);
-
-
+    public DiaPageDTO getDiasByForo(String idForo);
 
 }

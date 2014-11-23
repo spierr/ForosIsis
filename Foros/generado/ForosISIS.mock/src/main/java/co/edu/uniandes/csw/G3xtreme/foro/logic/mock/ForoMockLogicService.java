@@ -44,7 +44,7 @@ public class ForoMockLogicService extends _ForoMockLogicService implements IForo
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public DiaPageDTO getDiasByForo(String idForo, Integer page, Integer maxRecords) {
+    public DiaPageDTO getDiasByForo(String idForo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	
