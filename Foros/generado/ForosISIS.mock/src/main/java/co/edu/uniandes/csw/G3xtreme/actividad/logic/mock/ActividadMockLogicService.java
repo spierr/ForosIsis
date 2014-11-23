@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.api.IActividadLogicService;
+import co.edu.uniandes.csw.G3xtreme.info.logic.dto.InfoDTO;
 @Singleton
 public class ActividadMockLogicService extends _ActividadMockLogicService implements IActividadLogicService {
+
+    public InfoDTO agregarExpositorActividad(String idActividad, String idExpositor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
