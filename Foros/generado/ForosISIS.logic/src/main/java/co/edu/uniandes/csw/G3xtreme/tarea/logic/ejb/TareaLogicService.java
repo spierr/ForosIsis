@@ -52,8 +52,8 @@ public class TareaLogicService extends _TareaLogicService implements ITareaLogic
     }
 
     
-    public TareaPageDTO getTareasAll(String responsable) {
-        return persistance.getTareasAll(responsable);
+    public TareaPageDTO getTareasAll(String nombreForo) {
+        return persistance.getTareasAll(nombreForo);
     }
 
     public TareaPageDTO getTareasPorResponsable(String responsable) {

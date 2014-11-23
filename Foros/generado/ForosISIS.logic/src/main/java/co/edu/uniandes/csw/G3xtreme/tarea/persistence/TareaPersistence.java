@@ -48,10 +48,10 @@ import javax.persistence.Query;
 public class TareaPersistence extends _TareaPersistence  implements ITareaPersistence {
 
     public TareaPageDTO getTareasAll(String responsable) {
-        Query count = entityManager.createQuery("select count(u) from UserEntity u");
+        Query count = entityManager.createQuery("select count(u) from TareaEntity u");
         Long regCount = 0L;
         regCount = Long.parseLong(count.getSingleResult().toString());
-        Query q = entityManager.createQuery("SELECT all FROM UserEntity");
+        Query q = entityManager.createQuery("SELECT all FROM TareaEntity");
         //q.setParameter("responsable", "%"+responsable+"%");
 
         TareaPageDTO response = new TareaPageDTO();
