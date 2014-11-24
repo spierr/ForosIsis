@@ -37,4 +37,7 @@ public interface IResponsableLogicService extends _IResponsableLogicService {
     public ResponsableDTO getResponsableId(String name);
 
     public ResponsablePageDTO getResponsablesPorNombre(String nombre);
-}
+
+    public boolean enviarCorreoAResponsable(String mensaje, String idResp) throws Exception;
+
+ }
