@@ -32,6 +32,7 @@ package co.edu.uniandes.csw.G3xtreme.responsable.logic.ejb;
 
 import co.edu.uniandes.csw.G3xtreme.responsable.logic.api.IResponsableLogicService;
 import co.edu.uniandes.csw.G3xtreme.responsable.logic.dto.ResponsableDTO;
+import co.edu.uniandes.csw.G3xtreme.responsable.logic.dto.ResponsablePageDTO;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless; 
@@ -43,6 +44,11 @@ import javax.inject.Inject;
 @Stateless
 @LocalBean
 public class ResponsableLogicService extends _ResponsableLogicService implements IResponsableLogicService {
+
+    public ResponsablePageDTO getResponsablesPorNombre(String nombre) {
+        return persistance.getResponsablesPorNombre(nombre);
+    }
+
     public ResponsableDTO getResponsableId(String name) {
         return persistance.getResponsableId(name);
     }
