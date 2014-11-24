@@ -17,6 +17,26 @@
                 $('#container').attr('src', url);
                 $('#container').css('height', ($(window).height() - $('#header').height() - 30) + 'px');
             }
+            function reloadFases(){
+                var text = '{ "employees" : [' +
+'{ "idForo":"1" , "lastName":"Doe" ]'
+                $.ajax({
+                    url: "/ForosISIS.web/webresources/ForoMaster/getFasesByForo",
+                    type : "GET",
+                    data: $.param(text),
+                    contentType: 'application/json',
+                }).done(function(data) {
+                    $.each(data, function(index,value){
+                       var strongText = ".fase" + index + "_text";
+                       var cssText = ".fase" + index + "_css";
+                       $(strongText).text(value.id + "% Completado");
+                       $(cssText).css("width", value.id + "%");
+                    });
+                    console.log(data);
+                }, this).error(function(data) {
+                    alert(data);
+                }, this);
+            }
             
             </script>
     </head>
@@ -27,10 +47,14 @@
 	                Menu <span class="caret"></span>
 	            </button>
 	            <ul class="dropdown-menu" role="menu">
+                        
+                        <li><a href="#" onclick="reloadFases(); return false;">Boton de pruebas</a></li>
+                       
 	                <li><a href="#" onclick="redirectFrame('foro.html'); return false;">Foro</a></li>
     
 	                <li><a href="#" onclick="redirectFrame('tarea.html'); return false;">Tarea</a></li>
     
+                             
 	                <li><a href="#" onclick="redirectFrame('fase.html'); return false;">Fase</a></li>
     
 	                <li><a href="#" onclick="redirectFrame('responsable.html'); return false;">Responsable</a></li>
