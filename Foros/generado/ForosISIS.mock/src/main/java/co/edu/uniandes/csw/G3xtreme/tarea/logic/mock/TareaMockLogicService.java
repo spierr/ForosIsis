@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.tarea.logic.api.ITareaLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaPageDTO;
 @Singleton
 public class TareaMockLogicService extends _TareaMockLogicService implements ITareaLogicService {
+
+    public TareaPageDTO darTareasResponsable(Integer page, Integer maxRecords, String idresp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
