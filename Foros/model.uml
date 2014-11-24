@@ -60,6 +60,11 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="__5zlAD4iEeS5DIlKHX8BhQ" name="name" type="_nnlJgD4dEeS5DIlKHX8BhQ"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_CXPQwD4jEeS5DIlKHX8BhQ" name="correo" type="_nnlJgD4dEeS5DIlKHX8BhQ"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_FVnGYD4jEeS5DIlKHX8BhQ" name="tipo" type="_nnlJgD4dEeS5DIlKHX8BhQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pQTnMHOZEeSIGvNx_MlpWQ" name="contrasenia" type="_nnlJgD4dEeS5DIlKHX8BhQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AbD2kHOaEeSIGvNx_MlpWQ" name="rolResp" type="_8wMuYHOZEeSIGvNx_MlpWQ" aggregation="shared" association="_AbD2k3OaEeSIGvNx_MlpWQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AbD2kXOaEeSIGvNx_MlpWQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AbD2knOaEeSIGvNx_MlpWQ" value="1"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_KUUKID4lEeS5DIlKHX8BhQ" name="Actividad">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_P0J28D4lEeS5DIlKHX8BhQ" name="id" type="_4s99ID4dEeS5DIlKHX8BhQ"/>
@@ -162,6 +167,16 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_lUP5xHN3EeSq39a9emDtBw" name="foro" type="_Yc3S0D4dEeS5DIlKHX8BhQ" association="_lUP5w3N3EeSq39a9emDtBw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lUP5xXN3EeSq39a9emDtBw" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lUP5xnN3EeSq39a9emDtBw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8wMuYHOZEeSIGvNx_MlpWQ" name="Rol">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SEYdsHOaEeSIGvNx_MlpWQ" name="id" type="_4s99ID4dEeS5DIlKHX8BhQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SmDnYHOaEeSIGvNx_MlpWQ" name="name" type="_nnlJgD4dEeS5DIlKHX8BhQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_AbD2k3OaEeSIGvNx_MlpWQ" name="rolUsuario" memberEnd="_AbD2lHOaEeSIGvNx_MlpWQ _AbD2kHOaEeSIGvNx_MlpWQ">
+    <ownedEnd xmi:type="uml:Property" xmi:id="_AbD2lHOaEeSIGvNx_MlpWQ" name="responsable" type="_1C6T8D4iEeS5DIlKHX8BhQ" association="_AbD2k3OaEeSIGvNx_MlpWQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AbD2lXOaEeSIGvNx_MlpWQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AbD2lnOaEeSIGvNx_MlpWQ" value="1"/>
     </ownedEnd>
   </packagedElement>
 </uml:Model>

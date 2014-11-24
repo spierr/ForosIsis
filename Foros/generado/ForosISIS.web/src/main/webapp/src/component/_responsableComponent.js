@@ -37,6 +37,8 @@ define(['component/_CRUDComponent', 'model/responsableModel', 'controller/respon
         	this.listComponent.addColumn('name','Name');
         	this.listComponent.addColumn('correo','Correo');
         	this.listComponent.addColumn('tipo','Tipo');
+        	this.listComponent.addColumn('contrasenia','Contrasenia');
+        	this.listComponent.addColumn('rolrespId','Rolresp Id');
         }
     });
     return App.Component._ResponsableComponent;

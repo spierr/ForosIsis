@@ -1,0 +1,11 @@
+{
+    "displayName" : "Rol",
+    "name" : "rol",
+    "templateName" : "rol",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    
+	"context": "/ForosISIS.web/webresources/Rol",
+    
+    "el" : "#main"
+}

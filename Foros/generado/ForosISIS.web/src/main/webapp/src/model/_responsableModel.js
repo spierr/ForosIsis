@@ -33,7 +33,9 @@ define([], function() {
  
 		 'name' : '' ,  
 		 'correo' : '' ,  
-		 'tipo' : ''        },
+		 'tipo' : '' ,  
+		 'contrasenia' : '' ,  
+		 'rolrespId' : ''        },
         initialize: function() {
           var self = this;
           this.on('invalid',function(error){
@@ -41,6 +43,11 @@ define([], function() {
           });
         },
         getDisplay: function(name) {
+			 if(name=='rolrespId'){  
+                 var value = App.Utils.getModelFromCache('rolComponent',this.get('rolrespId'));
+                 if(value) 
+                 return value.get('name');
+             }
          return this.get(name);
         }
     });

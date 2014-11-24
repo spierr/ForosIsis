@@ -16,6 +16,20 @@
 		<label for="tipo">Tipo</label>
     	<input type="text" class="form-control" id="tipo" name="tipo" placeholder="Enter value" value="<%= responsable.get('tipo') %>"/>	
 		</div>
+		<div class="form-group" >
+		<label for="contrasenia">Contrasenia</label>
+    	<input type="text" class="form-control" id="contrasenia" name="contrasenia" placeholder="Enter value" value="<%= responsable.get('contrasenia') %>"/>	
+		</div>
+		<div class="form-group" >
+ 
+			<label for="rolrespidId">Rolresp Id</label> 
+            <select class="form-control" id="rolrespId" name="rolrespId">
+			  <option value="">None</option>
+            <% rolResp.each(function(rolrespid) { %> 
+              <option value="<%=rolrespid.get('id')%>" <% if(responsable.get('rolrespId')==rolrespid.get('id')) {%>selected<%}%> ><%=rolrespid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
     </form>
     </div>
 </script> 

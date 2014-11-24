@@ -50,6 +50,8 @@ public abstract class _ResponsableConverter {
 					dto.setName(entity.getName());
 					dto.setCorreo(entity.getCorreo());
 					dto.setTipo(entity.getTipo());
+					dto.setContrasenia(entity.getContrasenia());
+					dto.setRolrespId(entity.getRolrespId());
 			return dto;
 		}else{
 			return null;
@@ -66,6 +68,10 @@ public abstract class _ResponsableConverter {
 					entity.setCorreo(dto.getCorreo());
 			
 					entity.setTipo(dto.getTipo());
+			
+					entity.setContrasenia(dto.getContrasenia());
+			
+					entity.setRolrespId(dto.getRolrespId());
 			
 			return entity;
 		}else {

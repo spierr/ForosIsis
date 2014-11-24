@@ -49,6 +49,12 @@ public abstract class _ResponsableDTO {
 	
 
 	private String tipo;
+	
+
+	private String contrasenia;
+	
+
+	private Long rolrespId;
 
 
 
@@ -85,6 +91,24 @@ public abstract class _ResponsableDTO {
  
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+ 
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+
+	public Long getRolrespId() {
+		return rolrespId;
+	}
+ 
+	public void setRolrespId(Long rolrespid) {
+		this.rolrespId = rolrespid;
 	}
 	
 }

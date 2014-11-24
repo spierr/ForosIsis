@@ -47,6 +47,8 @@ public abstract class _ResponsableEntity {
 	private String name;
 	private String correo;
 	private String tipo;
+	private String contrasenia;
+	private Long rolrespId;
 
 	public Long getId(){
 		return id;
@@ -75,5 +77,19 @@ public abstract class _ResponsableEntity {
 	
 	public void setTipo(String tipo){
 		this.tipo = tipo;
+	}
+	public String getContrasenia(){
+		return contrasenia;
+	}
+	
+	public void setContrasenia(String contrasenia){
+		this.contrasenia = contrasenia;
+	}
+	public Long getRolrespId(){
+		return rolrespId;
+	}
+	
+	public void setRolrespId(Long rolrespId){
+		this.rolrespId = rolrespId;
 	}
 }

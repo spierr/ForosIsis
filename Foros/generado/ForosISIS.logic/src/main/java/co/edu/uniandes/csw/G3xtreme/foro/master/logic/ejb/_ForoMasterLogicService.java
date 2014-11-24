@@ -50,9 +50,9 @@ public abstract class _ForoMasterLogicService implements _IForoMasterLogicServic
     @Inject
     protected IForoMasterPersistence foroMasterPersistance;
     @Inject
-    protected IActividadPersistence actividadPersistance;
-    @Inject
     protected IFasePersistence fasePersistance;
+    @Inject
+    protected IActividadPersistence actividadPersistance;
 
     public ForoMasterDTO createMasterForo(ForoMasterDTO foro) {
         ForoDTO persistedForoDTO = foroPersistance.createForo(foro.getForoEntity());

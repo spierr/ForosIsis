@@ -138,6 +138,21 @@ define(['model/responsableModel'], function(responsableModel) {
                 });
             }
         },
+		_loadRequiredComponentsData: function(callBack) {
+            var self = this;
+            var listReady = _.after(1, function(){
+                callBack();
+            }); 
+            var listDataReady = function(componentName, model, aliasModel){
+            if(aliasModel){
+                self[aliasModel] = model;
+            } else {
+            	self[componentName] = model;
+            }    
+                listReady();
+            };
+				App.Utils.getComponentList('rolComponent',listDataReady,'rolRespComponent');
+        },
         save: function() {
             var self = this;
             var model = $('#' + this.componentId + '-responsableForm').serializeObject();
@@ -168,6 +183,8 @@ define(['model/responsableModel'], function(responsableModel) {
             var self = this;
             this.$el.slideUp("fast", function() {
                 self.$el.html(self.editTemplate({responsable: self.currentModel, componentId: self.componentId , showEdit : self.showEdit , showDelete : self.showDelete
+ 
+				    ,rolResp: self.rolRespComponent
  
 				}));
                 self.$el.slideDown("fast");
