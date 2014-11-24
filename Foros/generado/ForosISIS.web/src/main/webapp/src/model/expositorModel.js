@@ -35,6 +35,9 @@ define(['model/_expositorModel'], function() {
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }
+            if( attrs.costo && parseInt(attrs.costo) < 0){
+                validationMessage = "El costo debe ser un numero positivo";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
