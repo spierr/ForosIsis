@@ -33,7 +33,13 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.fase.master.logic.api.IFaseMasterLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
+import java.util.List;
 @Singleton
 public class FaseMasterMockLogicService extends _FaseMasterMockLogicService implements IFaseMasterLogicService {
+
+    public List<TareaDTO> getTareasByFase(String idFase) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

@@ -19,9 +19,9 @@
             }
             function reloadFases(){
                 var text = '{ "employees" : [' +
-'{ "idForo":"1" , "lastName":"Doe" ]'
+'{ "idFase":"1" , "lastName":"Doe" ]'
                 $.ajax({
-                    url: "/ForosISIS.web/webresources/ForoMaster/getFasesByForo",
+                    url: "/ForosISIS.web/webresources/FaseMaster/getTareasByFase",
                     type : "GET",
                     data: $.param(text),
                     contentType: 'application/json',

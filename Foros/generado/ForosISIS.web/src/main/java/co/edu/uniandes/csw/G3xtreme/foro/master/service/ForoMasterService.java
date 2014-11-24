@@ -60,8 +60,8 @@ public class ForoMasterService extends _ForoMasterService {
             //Implementar lógica de búsqueda
             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idForo = queryParams.getFirst("idForo");
-            System.out.println("el di es: " + 1);
-            return foroLogicService.getFasesByForo("1", 1, 20);
+           
+            return foroLogicService.getFasesByForo(idForo, 1, 20);
         }
 
 }
