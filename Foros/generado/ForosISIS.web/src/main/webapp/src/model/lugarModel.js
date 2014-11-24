@@ -35,6 +35,19 @@ define(['model/_lugarModel'], function() {
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }
+            if(!attrs.direccion){
+                validationMessage = "La diección no puede ser vacia.";
+            }
+            if(!attrs.costo){
+                validationMessage = "El costo no puede ser vacio";
+            }
+            if(!attrs.direccion.contains("#")||!attrs.direccion.contains("-")){
+                validationMessage = " La direccion debe ser del formato calle/carrera numero # numero-numero.";
+            }
+            if(parseInt(attrs.costo)< 0 )
+            {
+                validationMessage = "El costo debe ser un numero positivo.";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
