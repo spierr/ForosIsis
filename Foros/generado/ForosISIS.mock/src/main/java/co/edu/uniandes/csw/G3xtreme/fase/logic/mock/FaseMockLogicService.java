@@ -35,5 +35,5 @@ import javax.inject.Singleton;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.api.IFaseLogicService;
 @Singleton
 public class FaseMockLogicService extends _FaseMockLogicService implements IFaseLogicService {
-	
+
 }
