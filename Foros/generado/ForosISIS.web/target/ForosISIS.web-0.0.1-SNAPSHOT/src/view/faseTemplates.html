@@ -9,11 +9,6 @@
     	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= fase.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-	    <label>
-    	  <input id="estado" name="estado" value="true" type="checkbox" <%= fase.get('estado')?'checked':'' %>> Estado
-    	</label>
-		</div>
-		<div class="form-group" >
 			<label for="fechaInicio">Fecha Inicio</label>
     		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaInicio"  name="fechaInicio" placeholder="Enter value" />
     		<%= '<scr'+'ipt>' %>

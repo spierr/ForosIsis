@@ -4,6 +4,8 @@
     "templateName" : "lugar",
     "url" : "user.html",
     "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Lugar",
+    
+	"context": "/ForosISIS.web/webresources/Lugar",
+    
     "el" : "#main"
 }

@@ -1,7 +1,7 @@
 define(['controller/selectionController', 'model/cacheModel', 'model/foroMasterModel', 'component/_CRUDComponent', 'controller/tabController', 'component/foroComponent',
- 'component/faseComponent', 'component/coordinadorComponent', 'component/diaComponent'],
+ 'component/faseComponent', 'component/actividadComponent'],
  function(SelectionController, CacheModel, ForoMasterModel, CRUDComponent, TabController, ForoComponent,
- fase_foroComponent, coordinador_foroComponent, dia_foroComponent) {
+ fase_foroComponent, actividadComponent) {
     App.Component._ForoMasterComponent = App.Component.BasicComponent.extend({
         initialize: function() {
             var self = this;
@@ -45,19 +45,11 @@ define(['controller/selectionController', 'model/cacheModel', 'model/foroMasterM
 				);
 
 				App.Utils.fillCacheList(
-					'coordinador_foro',
+					'actividad',
 					self.model,
-					self.coordinador_foroComponent.getDeletedRecords(),
-					self.coordinador_foroComponent.getUpdatedRecords(),
-					self.coordinador_foroComponent.getCreatedRecords()
-				);
-
-				App.Utils.fillCacheList(
-					'dia_foro',
-					self.model,
-					self.dia_foroComponent.getDeletedRecords(),
-					self.dia_foroComponent.getUpdatedRecords(),
-					self.dia_foroComponent.getCreatedRecords()
+					self.actividadComponent.getDeletedRecords(),
+					self.actividadComponent.getUpdatedRecords(),
+					self.actividadComponent.getCreatedRecords()
 				);
 
                 self.model.save({}, {
@@ -87,8 +79,7 @@ define(['controller/selectionController', 'model/cacheModel', 'model/foroMasterM
 		initializeChildComponents: function () {
 			this.tabModel = new App.Model.TabModel({tabs: [
                 {label: "Fase_foro", name: "fase_foro", enable: true},
-                {label: "Coordinador_foro", name: "coordinador_foro", enable: true},
-                {label: "Dia_foro", name: "dia_foro", enable: true}
+                {label: "Actividad", name: "actividad", enable: true}
 			]});
 			this.tabs = new TabController({model: this.tabModel});
 
@@ -96,13 +87,9 @@ define(['controller/selectionController', 'model/cacheModel', 'model/foroMasterM
             this.fase_foroComponent.initialize({cache: {data: [], mode: "memory"},pagination: false});
 			this.childComponents.push(this.fase_foroComponent);
 
-			this.coordinador_foroComponent = new coordinador_foroComponent();
-            this.coordinador_foroComponent.initialize({cache: {data: [], mode: "memory"},pagination: false});
-			this.childComponents.push(this.coordinador_foroComponent);
-
-			this.dia_foroComponent = new dia_foroComponent();
-            this.dia_foroComponent.initialize({cache: {data: [], mode: "memory"},pagination: false});
-			this.childComponents.push(this.dia_foroComponent);
+			this.actividadComponent = new actividadComponent();
+            this.actividadComponent.initialize({cache: {data: [], mode: "memory"},pagination: false});
+			this.childComponents.push(this.actividadComponent);
 
             var self = this;
             
@@ -111,13 +98,8 @@ define(['controller/selectionController', 'model/cacheModel', 'model/foroMasterM
                 params.view.currentModel.setCacheList(params.view.currentList);
             });
             
-            this.configToolbar(this.coordinador_foroComponent,true);
-            Backbone.on(self.coordinador_foroComponent.componentId + '-post-coordinador-create', function(params) {
-                params.view.currentModel.setCacheList(params.view.currentList);
-            });
-            
-            this.configToolbar(this.dia_foroComponent,true);
-            Backbone.on(self.dia_foroComponent.componentId + '-post-dia-create', function(params) {
+            this.configToolbar(this.actividadComponent,true);
+            Backbone.on(self.actividadComponent.componentId + '-post-actividad-create', function(params) {
                 params.view.currentModel.setCacheList(params.view.currentList);
             });
             
@@ -133,13 +115,9 @@ define(['controller/selectionController', 'model/cacheModel', 'model/foroMasterM
 					self.fase_foroComponent.setRecords(self.model.get('listfase_foro'));
 					self.fase_foroComponent.render(self.tabs.getTabHtmlId('fase_foro'));
 
-					self.coordinador_foroComponent.clearCache();
-					self.coordinador_foroComponent.setRecords(self.model.get('listcoordinador_foro'));
-					self.coordinador_foroComponent.render(self.tabs.getTabHtmlId('coordinador_foro'));
-
-					self.dia_foroComponent.clearCache();
-					self.dia_foroComponent.setRecords(self.model.get('listdia_foro'));
-					self.dia_foroComponent.render(self.tabs.getTabHtmlId('dia_foro'));
+					self.actividadComponent.clearCache();
+					self.actividadComponent.setRecords(self.model.get('listactividad'));
+					self.actividadComponent.render(self.tabs.getTabHtmlId('actividad'));
 
                     $('#'+self.tabsElement).show();
                 },

@@ -4,6 +4,8 @@
     "templateName" : "actividad",
     "url" : "user.html",
     "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Actividad",
+    
+	"context": "/ForosISIS.web/webresources/Actividad",
+    
     "el" : "#main"
 }

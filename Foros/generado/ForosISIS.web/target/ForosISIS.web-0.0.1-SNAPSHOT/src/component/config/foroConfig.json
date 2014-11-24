@@ -4,6 +4,8 @@
     "templateName" : "foro",
     "url" : "user.html",
     "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Foro",
+    
+	"context": "/ForosISIS.web/webresources/Foro",
+    
     "el" : "#main"
 }

@@ -4,16 +4,14 @@
  * and open the template in the editor.
  */
 
-define(['controller/listController'], function () {
+define(['controller/listController'], function (ListController) {
 	App.Component.ListComponent = Backbone.View.extend({
 		initialize: function (options) {
 			if (options.componentId) {
 				this.componentId = options.componentId;
 			}
 			var model = new App.Model.ListModel({componentId: this.componentId, name: options.name});
-			this.listController = new App.Controller.ListController({
-				model: model
-			});
+			this.listController = new ListController({model: model});
 		},
 		addColumn: function (columnName, displayName, formula) {
 			this.listController.addColumn(columnName, displayName, formula);
@@ -56,6 +54,9 @@ define(['controller/listController'], function () {
 		},
 		display: function (flag) {
 			this.listController.display(flag);
+		},
+		setRowConditionalFormat: function(callback){
+			this.listController.setRowConditionalFormat(callback);
 		}
 	});
 

@@ -4,6 +4,8 @@
     "templateName" : "fase",
     "url" : "user.html",
     "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Fase",
+    
+	"context": "/ForosISIS.web/webresources/Fase",
+    
     "el" : "#main"
 }

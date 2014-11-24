@@ -132,6 +132,13 @@ define(['model/listModel'], function () {
 			} else {
 				console.log("parameter value must be boolean type");
 			}
+		},
+		setRowConditionalFormat: function(callback){
+			if (typeof(callback) === "function") {
+				this.model.set('rowFormat',callback);
+			}else {
+				this.model.set('rowFormat',null);
+			}
 		}
 	});
 

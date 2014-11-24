@@ -18,13 +18,15 @@ define([], function() {
 			data: [],
 			actions : [], //corresponde a buttonModel
 			idField: 'id',
-			selectedItems: {}
+			selectedItems: {},
+			rowFormat: null
 		},
 		initialize : function() {
 			this.set('actions', []);
 			this.set('columns', []);
 			this.set('data', []);
 			this.set('selectedItems', {});
+			this.set('rowFormat',null);
 		}
 	});
 	return App.Model.ListModel;

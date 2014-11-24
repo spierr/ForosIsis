@@ -1,0 +1,11 @@
+{
+    "displayName" : "Empresa",
+    "name" : "empresa",
+    "templateName" : "empresa",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    
+	"context": "/ForosISIS.web/webresources/Empresa",
+    
+    "el" : "#main"
+}

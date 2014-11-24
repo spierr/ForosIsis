@@ -1,0 +1,29 @@
+<script type="text/template" id="estadisticas">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-estadisticasForm">
+    <% if(estadisticas.id) {%>
+    <input type="hidden" name="id" value="<%= estadisticas.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= estadisticas.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="totalInscritos">Total Inscritos</label>
+    	<input type="text" class="form-control" id="totalInscritos" name="totalInscritos" placeholder="Enter value" value="<%= estadisticas.get('totalInscritos') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="asistenetesTiempoReal">Asistenetes Tiempo Real</label>
+    	<input type="text" class="form-control" id="asistenetesTiempoReal" name="asistenetesTiempoReal" placeholder="Enter value" value="<%= estadisticas.get('asistenetesTiempoReal') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="visitasAPlataformaInscripcion">Visitas A Plataforma Inscripcion</label>
+    	<input type="text" class="form-control" id="visitasAPlataformaInscripcion" name="visitasAPlataformaInscripcion" placeholder="Enter value" value="<%= estadisticas.get('visitasAPlataformaInscripcion') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="memoria">Memoria</label>
+    	<input type="text" class="form-control" id="memoria" name="memoria" placeholder="Enter value" value="<%= estadisticas.get('memoria') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

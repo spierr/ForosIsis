@@ -4,6 +4,8 @@
     "templateName" : "expositor",
     "url" : "user.html",
     "server": "localhost:8080",
-    "context": "/ForosISIS.web/webresources/Expositor",
+    
+	"context": "/ForosISIS.web/webresources/Expositor",
+    
     "el" : "#main"
 }

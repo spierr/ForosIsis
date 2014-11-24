@@ -1,0 +1,14 @@
+{
+    "displayName" : "Estadisticas",
+    "name" : "estadisticas",
+    "templateName" : "estadisticas",
+    "url" : "estadisticas.html",
+    "server": "localhost:8080",
+    "server": "localhost:8080",
+    
+    "context": "/ForosISIS.web/webresources/EstadisticasMaster",
+    
+	
+    
+    "el" : "#main"
+}
