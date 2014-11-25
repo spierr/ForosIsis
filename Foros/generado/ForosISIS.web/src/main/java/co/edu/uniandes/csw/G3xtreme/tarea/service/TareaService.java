@@ -53,9 +53,9 @@ public class TareaService extends _TareaService {
 @Context
     UriInfo uriInfo;
     
-    @GET
+        @GET
         @Path("/darTareasResponsable")
-    public TareaPageDTO darTareasResponsable(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords){
+        public TareaPageDTO darTareasResponsable(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords){
 	 MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idresp = queryParams.getFirst("idResponsable");	
             return tareaLogicService.darTareasResponsable(page, maxRecords,"1");

@@ -84,10 +84,9 @@ public class ResponsableService extends _ResponsableService {
         return "" + responsableLogicService.getResponsableId(name).getId();
     }
     
-   @GET
-    @Path("services/{name}")
-    
-    public ResponsablePageDTO getUsers(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+    @GET
+    @Path("/getResponsablebyName")
+        public ResponsablePageDTO getUsers(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
         //Implementar lógica de búsqueda
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         String nombre = queryParams.getFirst("nombre");
@@ -104,7 +103,7 @@ public class ResponsableService extends _ResponsableService {
      * @return json con el cliente
      */
     @GET
-    @Path("servicejson/{name}")
+    @Path("/darResponsablePOrNombreExacto")
     public ResponsableDTO getResponsablebyName(@PathParam("name") String name) {
         return responsableLogicService.getResponsableId(name);
     }
