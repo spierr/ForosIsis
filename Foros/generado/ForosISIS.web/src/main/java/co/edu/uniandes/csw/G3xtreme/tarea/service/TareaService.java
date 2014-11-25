@@ -60,5 +60,17 @@ public class TareaService extends _TareaService {
             String idresp = queryParams.getFirst("idResponsable");	
             return tareaLogicService.darTareasResponsable(page, maxRecords,"1");
 	}
+        @GET
+        @Path("Fase/buscarTareasNombre")
+        public TareaPageDTO darTareasPorNombre(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+        //Implementar lógica de búsqueda
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        String name = queryParams.getFirst("name");
+        if (name != null && !name.isEmpty()) {
+            return tareaLogicService.darTareasPorNombre(name);
+        }
+        return super.getTareas(page, maxRecords);
+     }
+        
       
 }
