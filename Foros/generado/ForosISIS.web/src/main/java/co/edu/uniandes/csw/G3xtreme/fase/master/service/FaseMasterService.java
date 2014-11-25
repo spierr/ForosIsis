@@ -62,7 +62,7 @@ public class FaseMasterService extends _FaseMasterService {
             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idFase = queryParams.getFirst("idFase");
            System.out.println(idFase+"Este es el id que llega");
-            return faseLogicService.getTareasByFase("1");
+            return faseLogicService.getTareasByFase(idFase);
         }
   
     
@@ -77,7 +77,7 @@ public class FaseMasterService extends _FaseMasterService {
         for (int i = 0; i < list.size(); i++) {
             count+=list.get(i).getEstado();
          }
-        a.setNumDouble(count/list.size()*100);
+        a.setNumDouble(count/list.size());
         return a;
     }
 

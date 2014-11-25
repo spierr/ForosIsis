@@ -33,6 +33,7 @@ package co.edu.uniandes.csw.G3xtreme.foro.master.service;
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.dto.ActividadDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
+import co.edu.uniandes.csw.G3xtreme.info.dto.InfoDTO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -65,11 +66,25 @@ public class ForoMasterService extends _ForoMasterService {
         }
         @GET
         @Path("/getActividadesByForo")
-        public List<ActividadDTO> getActividadesByForo(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-            //Implementar lógica de búsqueda
+        public List<ActividadDTO> getActividadesByForo()//(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+        {  //Implementar lógica de búsqueda
             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idForo = queryParams.getFirst("idForo");
             return foroLogicService.getActividadesByForo(idForo);
+        }
+        
+        @GET
+        @Path("/costoForo")
+        public InfoDTO costoForo () {
+            //Implementar lógica de búsqueda
+            List<ActividadDTO> r= getActividadesByForo();
+            double count =0;
+            for (int i = 0; i < r.size(); i++) {
+                count+=r.get(i).getCosto();
+            }
+            InfoDTO a= new InfoDTO();
+            a.setNumDouble(count);
+            return a;
         }
 
 }
