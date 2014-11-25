@@ -113,12 +113,12 @@ public class ResponsablePersistence extends _ResponsablePersistence  implements 
         return convertedToHex(md5);
     }
 
-    public ResponsablePageDTO getResponsablesPorNombre(String nombre) {
+    public ResponsablePageDTO getResponsablesPorNombre(String name) {
         Query count = entityManager.createQuery("select count(r) from ResponsableEntity r");
         Long regCount = 0L;
         regCount = Long.parseLong(count.getSingleResult().toString());
         Query q = entityManager.createQuery("SELECT r FROM ResponsableEntity r WHERE r.name like :name");
-        q.setParameter("nombre", "%"+nombre+"%");
+        q.setParameter("name", "%"+name+"%");
 
         ResponsablePageDTO response = new ResponsablePageDTO();
         response.setTotalRecords(regCount);
