@@ -36,4 +36,6 @@ public interface ITareaLogicService extends _ITareaLogicService {
 
     public TareaPageDTO darTareasResponsable(Integer page, Integer maxRecords, String idresp);
 
+    public TareaPageDTO darTareasPorNombre(String name);
+
 }

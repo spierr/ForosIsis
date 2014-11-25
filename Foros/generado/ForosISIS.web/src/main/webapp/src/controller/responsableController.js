@@ -34,7 +34,7 @@ define(['controller/_responsableController','delegate/responsableDelegate'], fun
             var model = $('#' + this.componentId + '-responsableForm').serializeObject();
             this.currentModel.set(model);
             var delegate = new App.Delegate.ResponsableDelegate();
-            delegate.darResponsablePorNombre(self.currentModel, function (data) {
+            delegate.responsablePorNombre(self.currentModel, function (data) {
                 self.currentList.reset(data.records);
                 callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
              }, function (data) {

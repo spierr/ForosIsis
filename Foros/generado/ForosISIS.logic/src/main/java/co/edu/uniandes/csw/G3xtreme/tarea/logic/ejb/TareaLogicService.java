@@ -49,4 +49,8 @@ public class TareaLogicService extends _TareaLogicService implements ITareaLogic
         return persistance.darTareasResponsable( page,  maxRecords,  idresp);
     }
 
+    public TareaPageDTO darTareasPorNombre(String name) {
+     return persistance.darTareasPorNombre(name);   
+    }
+
 }

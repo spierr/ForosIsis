@@ -40,5 +40,9 @@ public class TareaMockLogicService extends _TareaMockLogicService implements ITa
     public TareaPageDTO darTareasResponsable(Integer page, Integer maxRecords, String idresp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public TareaPageDTO darTareasPorNombre(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

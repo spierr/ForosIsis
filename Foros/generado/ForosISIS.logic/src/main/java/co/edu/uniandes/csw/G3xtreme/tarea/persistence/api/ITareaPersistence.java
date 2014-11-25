@@ -36,4 +36,6 @@ public interface ITareaPersistence extends _ITareaPersistence {
 
     public TareaPageDTO darTareasResponsable(Integer page, Integer maxRecords, String idresp);
 
+    public TareaPageDTO darTareasPorNombre(String name);
+
 }

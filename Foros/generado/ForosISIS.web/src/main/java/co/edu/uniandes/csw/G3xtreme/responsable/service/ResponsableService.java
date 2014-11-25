@@ -85,13 +85,13 @@ public class ResponsableService extends _ResponsableService {
     }
     
     @GET
-    @Path("/getResponsablebyName")
-        public ResponsablePageDTO getUsers(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
+    @Path("Responsable/buscarResponsablesNombre")
+        public ResponsablePageDTO getResponsablesPorNombre(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
         //Implementar lógica de búsqueda
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-        String nombre = queryParams.getFirst("nombre");
-        if (nombre != null && !nombre.isEmpty()) {
-            return responsableLogicService.getResponsablesPorNombre(nombre); 
+        String name = queryParams.getFirst("name");
+        if (name != null && !name.isEmpty()) {
+            return responsableLogicService.getResponsablesPorNombre(name); 
         }
         return super.getResponsables(page, maxRecords);
     }
