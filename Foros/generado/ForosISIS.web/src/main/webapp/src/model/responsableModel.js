@@ -35,7 +35,10 @@ define(['model/_responsableModel'], function() {
             validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede ser vacio";
+            }
+            if(!attrs.correo.contains("@")&& !attrs.correo.contains(".")){
+                validationMessage = "El correo debe ser del formato: algo@algo.com ";
             }
             if(validationMessage.length>0){
                return validationMessage;

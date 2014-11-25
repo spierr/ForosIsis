@@ -33,7 +33,7 @@ define(['model/_lugarModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede ser vacio.";
             }
             if(!attrs.direccion){
                 validationMessage = "La diección no puede ser vacia.";
