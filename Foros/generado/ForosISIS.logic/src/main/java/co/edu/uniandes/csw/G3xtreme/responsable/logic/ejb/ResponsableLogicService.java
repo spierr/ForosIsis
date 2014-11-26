@@ -58,9 +58,9 @@ public class ResponsableLogicService extends _ResponsableLogicService implements
     }
 
     
-    public boolean enviarCorreoAResponsable(String mensaje, String idResp) throws Exception {
-    
-    Properties props = new Properties();
+    public boolean enviarCorreoAResponsable(String mensaje, String idResp) {
+        try {
+              Properties props = new Properties();
 		
 		// Nombre del host de correo, es smtp.gmail.com
 		props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -92,6 +92,10 @@ public class ResponsableLogicService extends _ResponsableLogicService implements
 			t.sendMessage(message,message.getAllRecipients());
 			t.close();
 		
+        } catch (Exception e) {
+            return false;
+        }
+  
 			// TODO Auto-generated catch block
 			
 		
