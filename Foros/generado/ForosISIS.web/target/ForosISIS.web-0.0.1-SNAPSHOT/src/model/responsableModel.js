@@ -35,10 +35,21 @@ define(['model/_responsableModel'], function() {
             validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "El nombre no puede ser vacio";
+                validationMessage = "El nombre no puede ser vacio.";
+            }
+            if(!attrs.correo)
+            {
+                alidationMessage = "El correo no puede ser vacio";
             }
             if(!attrs.correo.contains("@")&& !attrs.correo.contains(".")){
                 validationMessage = "El correo debe ser del formato: algo@algo.com ";
+            }
+            if(!attrs.tipo){
+                validationMessage = "El tipo no puede ser vacio.";
+            }
+            if(attrs.rolrespId.equals("None"))
+            {
+                validationMessage = "Se debe especificar el rol del responsable.";
             }
             if(validationMessage.length>0){
                return validationMessage;
