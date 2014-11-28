@@ -96,6 +96,9 @@ public class ForoLogicServiceTest {
 	private IForoMasterLogicService foroMasterLogicService;
         
         @Inject
+	private IFaseLogicService faseLogicService;
+        
+        @Inject
 	private IActividadLogicService actividadLogicService;
 
 	@Before
@@ -281,7 +284,7 @@ public class ForoLogicServiceTest {
         }
         List<ActividadDTO> lista1=foroMasterLogicService.getActividadesByForo(result.getId()+"");
         
-        //Prueba de las tareas
+        //Pruebas en el resultado
         for(int j=0;j<lista1.size();j++)
         {
             ActividadDTO a1=lista.get(j);
