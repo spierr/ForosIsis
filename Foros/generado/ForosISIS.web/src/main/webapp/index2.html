@@ -52,7 +52,7 @@
             
             function reloadFases(){
                 $.ajax({
-                    url: "/ForosISIS.web/webresources/Fase/estado",
+                    url: "/ForosISIS.web/webresources/FaseMaster/darEstadoFase",
                     type : "GET",
                     contentType: 'application/json',
                 }).done(function(data) {
