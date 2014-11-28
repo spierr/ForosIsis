@@ -32,6 +32,8 @@ package co.edu.uniandes.csw.G3xtreme.tarea.logic.ejb;
 
 import co.edu.uniandes.csw.G3xtreme.fase.logic.api.IFaseLogicService;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
+import co.edu.uniandes.csw.G3xtreme.fase.master.persistence.api.IFaseMasterPersistence;
+import co.edu.uniandes.csw.G3xtreme.fase.master.persistence.entity.Fasetarea_faseEntity;
 import co.edu.uniandes.csw.G3xtreme.foro.logic.api.IForoLogicService;
 import co.edu.uniandes.csw.G3xtreme.foro.logic.dto.ForoDTO;
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.api.IForoMasterLogicService;
@@ -102,6 +104,9 @@ public class TareaLogicServiceTest {
         
         @Inject
 	private IForoMasterPersistence foroMasterPersistence;
+        
+        @Inject
+	private IFaseMasterPersistence faseMasterPersistence;
 
 	@Before
 	public void configTest() {
@@ -309,6 +314,39 @@ public class TareaLogicServiceTest {
         ResponsableDTO respu=responsableLogicService.createResponsable(rdto);
         Assert.assertNotNull(respu);
         
+        //Creando tareas, 2 a un responsable
+        List<TareaDTO> listica=new ArrayList<TareaDTO>();
+        for(int i=0;i<3;i++)
+        {
+            TareaDTO tdto=new TareaDTO();
+            tdto.setName(generateRandom(String.class));
+            tdto.setDescripcion(generateRandom(String.class));
+            tdto.setEstado(0);
+            tdto.setFechaInicio(generateRandomDate());
+            tdto.setFechaFin(generateRandomDate());
+            tdto.setResponsable(respu.getName());
+            tdto.setResponsable_tareaId(rdto.getId());
+            TareaDTO res=tareaLogicService.createTarea(tdto);
+            Assert.assertNotNull(res);
+            listica.add(res);
+            
+            Fasetarea_faseEntity pr=new Fasetarea_faseEntity(resp.getId(), res.getId());
+            Fasetarea_faseEntity test=faseMasterPersistence.createFasetarea_faseEntity(pr);
+            Assert.assertNotNull(test);
+        }
         
-	}
+        //Pruebas
+        List<TareaDTO> tareas=(List<TareaDTO>)tareaLogicService.darTareasResponsable(Integer.SIZE, Integer.MIN_VALUE, DEPLOY);
+	for(int y=0;y<tareas.size();y++)
+        {
+            TareaDTO t1=listica.get(y);
+            TareaDTO t2=tareas.get(y);
+            Assert.assertEquals(t1.getName(), t2.getName());
+            Assert.assertEquals(t1.getDescripcion(), t2.getDescripcion());
+            Assert.assertTrue(t2.getEstado()==0);
+            Assert.assertEquals(t1.getFechaFin(), t2.getFechaFin());
+            Assert.assertEquals(t1.getFechaInicio(), t2.getFechaInicio());
+            Assert.assertEquals(t1.getResponsable(), t2.getResponsable());
+        }
+        }
 }
