@@ -47,4 +47,8 @@ public class ResponsableMockLogicService extends _ResponsableMockLogicService im
     public boolean enviarCorreoAResponsable(String mensaje, String idResp) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public ResponsableDTO getResponsableByName(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -163,7 +163,28 @@ public class ResponsableLogicServiceTest {
         ResponsableDTO deleted=responsablePersistence.getResponsable(pdto.getId());
         Assert.assertNull(deleted);
 	}
-	
+        
+        @Test
+        public void getResponsableIdTest(){
+                ResponsableDTO pdto=data.get(0);
+		ResponsableDTO ldto=responsableLogicService.getResponsableId(pdto.getId().toString());
+                Assert.assertNotNull(ldto);
+		Assert.assertEquals(pdto.getName(), ldto.getName());
+		Assert.assertEquals(pdto.getCorreo(), ldto.getCorreo());
+		Assert.assertEquals(pdto.getTipo(), ldto.getTipo());  
+        }
+        
+        @Test
+        public void getResponsablebyNameTest(){
+                ResponsableDTO pdto=data.get(1);
+		ResponsableDTO ldto=responsableLogicService.getResponsableByName(pdto.getName());
+                Assert.assertNotNull(ldto);
+		Assert.assertEquals(pdto.getName(), ldto.getName());
+		Assert.assertEquals(pdto.getCorreo(), ldto.getCorreo());
+		Assert.assertEquals(pdto.getTipo(), ldto.getTipo());  
+        }
+        
+        
 	@Test
 	public void updateResponsableTest(){
 		ResponsableDTO pdto=data.get(0);

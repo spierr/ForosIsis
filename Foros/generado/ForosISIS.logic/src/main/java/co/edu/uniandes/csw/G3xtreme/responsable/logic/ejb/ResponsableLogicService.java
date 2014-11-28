@@ -53,8 +53,12 @@ public class ResponsableLogicService extends _ResponsableLogicService implements
         return persistance.getResponsablesPorNombre(nombre);
     }
 
-    public ResponsableDTO getResponsableId(String name) {
-        return persistance.getResponsableId(name);
+    public ResponsableDTO getResponsableId(String idP) {
+        return persistance.getResponsableId(idP);
+    }
+    
+    public ResponsableDTO getResponsableByName(String name) {
+        return persistance.getResponsableByName(name);
     }
 
     

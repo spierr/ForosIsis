@@ -40,4 +40,8 @@ public interface IResponsableLogicService extends _IResponsableLogicService {
 
     public boolean enviarCorreoAResponsable(String mensaje, String idResp) throws Exception;
 
+    public ResponsableDTO getResponsableByName(String toString);
+
+    
+
  }

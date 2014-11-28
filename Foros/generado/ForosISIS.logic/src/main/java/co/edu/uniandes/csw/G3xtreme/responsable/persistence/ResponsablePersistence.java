@@ -47,7 +47,19 @@ import javax.persistence.Query;
 @Stateless 
 @LocalBean
 public class ResponsablePersistence extends _ResponsablePersistence  implements IResponsablePersistence {
-    public ResponsableDTO getResponsableId(String name) {
+    public ResponsableDTO getResponsableId(String idP) {
+        Query q = entityManager.createQuery("select y from ResponsableEntity y where y.id = '" + idP + "'");
+        if(q.getResultList().isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return ResponsableConverter.entity2PersistenceDTO((ResponsableEntity)q.getResultList().get(0));
+        }
+    }
+    
+    public ResponsableDTO getResponsableByName(String name) {
         Query q = entityManager.createQuery("select y from ResponsableEntity y where y.name = '" + name + "'");
         if(q.getResultList().isEmpty())
         {
@@ -58,6 +70,9 @@ public class ResponsablePersistence extends _ResponsablePersistence  implements 
             return ResponsableConverter.entity2PersistenceDTO((ResponsableEntity)q.getResultList().get(0));
         }
     }
+    
+    
+    
     
     @Override
     public ResponsableDTO createResponsable(ResponsableDTO cliente) {

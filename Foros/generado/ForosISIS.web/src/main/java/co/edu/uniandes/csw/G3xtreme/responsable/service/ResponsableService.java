@@ -105,6 +105,6 @@ public class ResponsableService extends _ResponsableService {
     @GET
     @Path("/darResponsablePOrNombreExacto")
     public ResponsableDTO getResponsablebyName(@PathParam("name") String name) {
-        return responsableLogicService.getResponsableId(name);
+        return responsableLogicService.getResponsableByName(name);
     }
 }

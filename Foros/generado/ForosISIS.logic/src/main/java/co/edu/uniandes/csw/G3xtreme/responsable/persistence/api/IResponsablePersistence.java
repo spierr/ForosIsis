@@ -37,4 +37,6 @@ public interface IResponsablePersistence extends _IResponsablePersistence {
     public ResponsableDTO getResponsableId(String name);
 
     public ResponsablePageDTO getResponsablesPorNombre(String nombre);
+
+    public ResponsableDTO getResponsableByName(String name);
 }
