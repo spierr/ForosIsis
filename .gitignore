@@ -1,5 +1,8 @@
+*.class
 /Foros/generado/crudmaker.web/target/
 /Foros/generado/ForosISIS.api/target/
 /Foros/generado/ForosISIS.logic/target/
 /Foros/generado/ForosISIS.mock/target/
 /Foros/generado/ForosISIS.web/target/
+*.class
+
