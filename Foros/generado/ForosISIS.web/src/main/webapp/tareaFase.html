@@ -55,9 +55,10 @@
                            var theTr = $("<tr>");
                            $(theTr).append("<td>" + value.name + "</td>");
                            $(theTr).append("<td>" + value.descripcion + "</td>");
-                           $(theTr).append("<td>" + value.estado + "</td>");
+                           $(theTr).append("<td>" + "<div class=\"progress\"><div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"" + value.estado + "\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + value.estado + "%\"><span class=\"sr-only\">" + value.estado + "% Complete</span></div></div></td>");
                            $(theTr).append("<td>" + value.responsable + "</td>");
                            $(theTr).append("<td><button class='btn btn-info notificar' value='" + value.responsable_tareaId + "'> Notificar Responsable</button></td>");
+                           $(theTr).append("<td><button class='btn btn-success cambiarEstado' value='" + value.id + "'> Cambiar Estado</button></td>");
                            $("#body-principal").append($(theTr));
                         });
 
@@ -89,6 +90,7 @@
                                 <th>Descripcion</th>
                                 <th>Estado</th>
                                 <th>Responsable</th>
+                                <th>Acciones</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
