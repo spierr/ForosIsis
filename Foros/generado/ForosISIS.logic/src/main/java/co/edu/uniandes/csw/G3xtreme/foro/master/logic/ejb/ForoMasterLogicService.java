@@ -34,6 +34,8 @@ package co.edu.uniandes.csw.G3xtreme.foro.master.logic.ejb;
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.dto.ActividadDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.api.IForoMasterLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -52,4 +54,12 @@ public class ForoMasterLogicService extends _ForoMasterLogicService implements I
             return foroMasterPersistance.getForoactividadEntityList(Long.parseLong(string));
             }
 
+    public List<TareaDTO> getTareasByForo(String idForo) {
+        List<FaseDTO> fases= foroMasterPersistance.getForofase_foroEntityList(Long.parseLong(idForo));
+        List<TareaDTO> tareas = new ArrayList<TareaDTO>();
+        for (int i = 0; i < fases.size(); i++) {
+            tareas.addAll(faseMasterPersistance.getFasetarea_faseEntityList(fases.get(i).getId()));
+        }
+        return tareas;
+    }
 }

@@ -14,6 +14,9 @@
                     domElementId: 'main'
             }
             ];
+            
+            var idForo = localStorage.getItem("idForo");
+            
         </script>
         <script src="./js/vendor/jquery-1.9.1.js"></script>
         <script src="./js/vendor/bootstrap.min.js"></script>
@@ -27,8 +30,24 @@
           <script src="../../assets/js/html5shiv.js"></script>
           <script src="../../assets/js/respond.min.js"></script>
         <![endif]-->
+        <script>
+            $(document).ready(function (){
+                $.ajax({
+                    url: "/ForosISIS.web/webresources/ForoMaster/costoForo",
+                    type : "GET",
+                    contentType: 'application/json',
+                    data : { idForo : idForo },
+                }).done(function(data) {
+                    //localStorage.setItem("titulo", data.titulo);
+                    $("#costo").text("Costo del Foro: " + data.numDouble);
+                });
+            });
+        </script>
     </head>
     <body>
+        <div style="margin: 10px;" class="jumbotron">
+            <h3 id="costo">Costo del Foro: </h3>
+        </div>
         <div class="container">
             <div id="main" ></div>
         </div>

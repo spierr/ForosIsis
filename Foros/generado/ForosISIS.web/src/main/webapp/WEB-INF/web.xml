@@ -3,18 +3,6 @@
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-    <security-constraint>
-        <display-name>ForosBlock</display-name>
-        <web-resource-collection>
-            <web-resource-name>index</web-resource-name>
-            <description/>
-            <url-pattern>index.html</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>Admin</role-name>
-        </auth-constraint>
-    </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>ClienteG3</realm-name>
@@ -23,8 +11,4 @@
             <form-error-page>/error.html</form-error-page>
         </form-login-config>
     </login-config>
-    <security-role>
-        <description/>
-        <role-name>Admin</role-name>
-    </security-role>
 </web-app>

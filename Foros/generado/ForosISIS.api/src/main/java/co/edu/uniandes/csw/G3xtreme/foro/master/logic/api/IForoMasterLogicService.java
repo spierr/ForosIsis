@@ -34,6 +34,7 @@ package co.edu.uniandes.csw.G3xtreme.foro.master.logic.api;
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.dto.ActividadDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import java.util.List;
 
 public interface IForoMasterLogicService extends _IForoMasterLogicService {
@@ -42,5 +43,5 @@ public interface IForoMasterLogicService extends _IForoMasterLogicService {
 
     public List<ActividadDTO> getActividadesByForo(String string);
 
-        
+    public List<TareaDTO> getTareasByForo(String idForo);
 }

@@ -34,6 +34,7 @@ import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.persistence.api.IFasePersistence;
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.dto.ActividadDTO;
 import co.edu.uniandes.csw.G3xtreme.actividad.persistence.api.IActividadPersistence;
+import co.edu.uniandes.csw.G3xtreme.fase.master.persistence.api.IFaseMasterPersistence;
 import co.edu.uniandes.csw.G3xtreme.foro.logic.dto.ForoDTO;
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.api._IForoMasterLogicService;
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.dto.ForoMasterDTO;
@@ -53,6 +54,8 @@ public abstract class _ForoMasterLogicService implements _IForoMasterLogicServic
     protected IFasePersistence fasePersistance;
     @Inject
     protected IActividadPersistence actividadPersistance;
+    @Inject
+    protected IFaseMasterPersistence faseMasterPersistance;
 
     public ForoMasterDTO createMasterForo(ForoMasterDTO foro) {
         ForoDTO persistedForoDTO = foroPersistance.createForo(foro.getForoEntity());

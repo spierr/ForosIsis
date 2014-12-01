@@ -38,8 +38,8 @@
           <script src="../../assets/js/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript">
-            localStorage.setItem("titulo", "FOROS-ISIS");
-            localStorage.setItem("idForo", 1);
+//            localStorage.setItem("titulo", "FOROS-ISIS");
+//            localStorage.setItem("idForo", 1);
             
             
             function redirectFrame(url) {
@@ -83,8 +83,30 @@
                 alert("Hola: " + idActividad);
             }
             
+            function redirectFrame1(url) {
+                    $('#containerMaster').attr('src', url);
+//                    $('#containerMaster').css('height', ($(window).height() - $('#header').height() - 30) + 'px');
+                }
+                
+            function redirectFrame2(url) {
+                    $('#containerMasterActividades').attr('src', url);
+//                    $('#containerMaster').css('height', ($(window).height() - $('#header').height() - 30) + 'px');
+            }
+            
+            function verTareasModal(){
+                console.log("parent method called");
+                $("#tareasMasterModal").modal();
+                redirectFrame1("faseMaster.html");
+            }
+            
             </script>
-            <style></style>
+            <style>
+                @media (min-width: 992px)
+                .modal-lg{
+                    width: 1300px;
+                    height: 900px; /* control height here */
+                }
+            </style>
     </head>
     <body>
 
@@ -99,7 +121,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" id="titulo-principal">ForosISIS</a>
+                <a class="navbar-brand" href="index2.html" id="titulo-principal">ForosISIS</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -301,10 +323,10 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> mpilar</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/ForosISIS.web/foros.html"><i class="fa fa-gear fa-fw"></i> Volver a Foros</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -328,31 +350,43 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#" onclick="redirectFrame('tareas.html'); return false; "><i class="fa fa-dashboard fa-fw"></i> Tareas</a>
+                            <a href="#" onclick="redirectFrame('tareas.html'); return false; "><i class="fa fa-th-list fa-fw"></i> Tareas</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Fases<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(1); return false;">Fase I</a>
+                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(0); return false;">Fase I</a>
                                 </li>
                                 <li>
-                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(2); return false;">Fase II</a>
+                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(1); return false;">Fase II</a>
                                 </li>
                                 <li>
-                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(3); return false; ">Fase III</a>
+                                    <a href="#" onclick="redirectFrame('tareaFase.html'); cambiarNumero(2); return false; ">Fase III</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#" onclick="redirectFrame('responsable.html'); return false;"><i class="fa fa-dashboard fa-fw"></i> Responsables</a>
+                            <a href="#" onclick="redirectFrame('responsable.html'); return false;"><i class="fa fa-user fa-fw"></i> Responsables</a>
                         </li>
                         <li>
                             <a href="#" onclick="redirectFrame('dias.html'); return false;"><i class="fa fa-calendar fa-fw"></i> Agenda</a>
                         </li>
                         <li>
+                            <a href="#" onclick="redirectFrame('lugar.html'); return false;"><i class="fa fa-map-marker fa-fw"></i> Lugares</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="redirectFrame('expositor.html'); return false;"><i class="fa fa-certificate fa-fw"></i> Expositores</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="redirectFrame('empresa.html'); return false;"><i class="fa fa-briefcase fa-fw"></i> Empresas</a>
+                        </li>
+                        <li>
                             <a href="#" onclick="redirectFrame('consultasForm.html'); return false;"><i class="fa fa-edit fa-fw"></i> Ver Consultas</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="redirectFrame('estadisticas.html'); return false;"><i class="fa fa-align-left fa-fw"></i> Estadisticas</a>
                         </li>
 <!--                        <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -439,6 +473,31 @@
 
     </div>
     <!-- /#wrapper -->
+    <div class="modal modal-lg fade" id="tareasMasterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Crear Tarea</h4>
+          </div>
+          <div class="modal-body">
+            <iframe id="containerMaster" src="" style="width: 100%; height: 100%; border: 0; margin: 0;"></iframe> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="btnCrearTarea">Crear Tarea</button>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="actividadesMasterModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <iframe id="containerMaster" src="" style="width: 100%; height: 100%; border: 0; margin: 0;"></iframe> 
+        </div>
+      </div>
+    </div>
 
     <!-- jQuery Version 1.11.0 -->
 <!--    <script src="js/vendor/jquery-1.9.1.js"></script>

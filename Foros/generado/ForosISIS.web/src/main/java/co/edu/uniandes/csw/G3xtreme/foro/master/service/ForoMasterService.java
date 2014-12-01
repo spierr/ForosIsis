@@ -34,6 +34,8 @@ import co.edu.uniandes.csw.G3xtreme.actividad.logic.dto.ActividadDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
 import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FasePageDTO;
 import co.edu.uniandes.csw.G3xtreme.info.dto.InfoDTO;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -54,11 +56,11 @@ import javax.ws.rs.core.UriInfo;
 public class ForoMasterService extends _ForoMasterService {
 @Context
     UriInfo uriInfo;
-    
+
     @GET
         @Path("/getFasesByForo")
         public List<FaseDTO> getFasesByForo(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-            //Implementar lógica de búsqueda
+            //Implementar lï¿½gica de bï¿½squeda
             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idForo = queryParams.getFirst("idForo");
            
@@ -67,7 +69,7 @@ public class ForoMasterService extends _ForoMasterService {
         @GET
         @Path("/getActividadesByForo")
         public List<ActividadDTO> getActividadesByForo()//(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-        {  //Implementar lógica de búsqueda
+        {  //Implementar lï¿½gica de bï¿½squeda
             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idForo = queryParams.getFirst("idForo");
             return foroLogicService.getActividadesByForo(idForo);
@@ -76,7 +78,7 @@ public class ForoMasterService extends _ForoMasterService {
         @GET
         @Path("/costoForo")
         public InfoDTO costoForo () {
-            //Implementar lógica de búsqueda
+            //Implementar lï¿½gica de bï¿½squeda
             List<ActividadDTO> r= getActividadesByForo();
             double count =0;
             for (int i = 0; i < r.size(); i++) {
@@ -86,5 +88,14 @@ public class ForoMasterService extends _ForoMasterService {
             a.setNumDouble(count);
             return a;
         }
-
+        
+        @GET
+        @Path("/tareasByForo")
+        public List<TareaDTO> getTareasByForo() {
+            //Implementar lÃ³gica de bÃºsqueda
+            MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+            String idForo = queryParams.getFirst("idForo");
+           
+            return foroLogicService.getTareasByForo(idForo);
+        }
 }

@@ -13,8 +13,6 @@ and open the template in the editor.
     <meta name="author" content="">
 
     <title>Principal - Foros ISIS</title>
-    
-    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <script src="js/jquery-1.11.0.js"></script>
@@ -44,7 +42,52 @@ and open the template in the editor.
         
         $(document).ready(function (){
             //localStorage.setItem("titulo","Foro Seguridad");
-            redirectFrame("foro.html");
+            redirectFrame("foroMaster.html");
+            
+            function cargarBotones(){
+                console.log("Cargando botones");
+                 $("#container").contents().find("tr").each(function(index){
+                     if(index == 0){
+                         $(this).append("<th>Foro</th>");
+                     }else{
+
+                         //Lo siguiente es culpa de BackBone!! :\
+                         var newTr = $("td");
+
+                         var people = $(this).children();
+                         var obj = $(people[3]).children()[0];
+                         var stringer = $(obj).attr("onclick");
+                         var finale = parseInt(stringer.substring(stringer.indexOf("{") + 5,stringer.indexOf("}") - 1));
+
+                         $(this).append("<td><button class='btn btn-info ver-foro' value='" + finale + "'>Ver Foro</button></td>");
+                     }
+                 });
+                    //Hay problemas cuando se presionan los botones
+//                    $(".btn").click(function (){
+//                        var will = $(this).attr("class");
+//                        if(will.indexOf("ver-foro") === -1 && will.indexOf("")){
+//                            cargarBotones();
+//                        }
+//                    });
+            }         
+
+            setTimeout(function() {
+                cargarBotones();
+                $("#container").contents().find(".ver-foro").click(function (){
+                    //event.preventDefault();
+
+                    var idForo = this.value;
+
+                    localStorage.setItem("idForo",idForo);
+                    localStorage.setItem("titulo","Foro Seguridad");
+                     //mostrar ventana de cargando foro
+
+                     //localStorage con el id del foro
+                     //localStorage con el titulo del foro
+                    window.top.location.href = "/ForosISIS.web/index2.html";  
+                     //reenviar a index2
+                 });
+            }, 800);
         });
     </script>
 
@@ -69,7 +112,7 @@ and open the template in the editor.
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">mpilar</a>
+                        <a href="#">misabel</a>
                     </li>
 <!--                    <li>
                         <a href="#">Services</a>

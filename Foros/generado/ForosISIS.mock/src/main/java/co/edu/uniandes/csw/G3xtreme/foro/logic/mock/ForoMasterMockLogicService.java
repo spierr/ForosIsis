@@ -35,6 +35,7 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.api.IForoMasterLogicService;
+import co.edu.uniandes.csw.G3xtreme.tarea.logic.dto.TareaDTO;
 import java.util.List;
 @Singleton
 public class ForoMasterMockLogicService extends _ForoMasterMockLogicService implements IForoMasterLogicService {
@@ -46,5 +47,8 @@ public class ForoMasterMockLogicService extends _ForoMasterMockLogicService impl
     public List<ActividadDTO> getActividadesByForo(String string) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-	
+
+    public List<TareaDTO> getTareasByForo(String idForo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
