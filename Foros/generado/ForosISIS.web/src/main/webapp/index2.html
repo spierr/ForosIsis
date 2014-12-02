@@ -77,6 +77,11 @@
                 $('#side-menu').metisMenu(); 
                 $("#titulo-principal").text(localStorage.getItem("titulo"));
                 $("#titulo-secundario").text(localStorage.getItem("titulo"));
+                
+                if(localStorage.getItem("idForo") == undefined){
+                    window.top.location = "/ForosISIS.web/login2.html";
+                }
+                //$("#usuarioNom").text("<i class=\"fa fa-user fa-fw\"></i> " + localStorage.getItem("usuario"));
             });
             
             function verActividadesDia(idActividad){
@@ -97,6 +102,10 @@
                 console.log("parent method called");
                 $("#tareasMasterModal").modal();
                 redirectFrame1("faseMaster.html");
+            }
+            
+            function cerrarSesion(){
+                localStorage.clear();
             }
             
             </script>
@@ -321,12 +330,12 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> mpilar</a>
+                        <li><a href="#" id="usuarioNom"><i class="fa fa-user fa-fw"></i> mpilar</a>
                         </li>
                         <li><a href="/ForosISIS.web/foros.html"><i class="fa fa-gear fa-fw"></i> Volver a Foros</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        <li><a href="login2.html" onclick="cerrarSesion()"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

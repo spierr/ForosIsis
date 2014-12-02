@@ -42,6 +42,10 @@ and open the template in the editor.
         
         $(document).ready(function (){
             //localStorage.setItem("titulo","Foro Seguridad");
+            if(localStorage.getItem("usuario") == undefined){
+                window.top.location = "/ForosISIS.web/login2.html";
+            }
+            
             redirectFrame("foroMaster.html");
             
             function cargarBotones(){
@@ -77,14 +81,26 @@ and open the template in the editor.
                     //event.preventDefault();
 
                     var idForo = this.value;
-
-                    localStorage.setItem("idForo",idForo);
-                    localStorage.setItem("titulo","Foro Seguridad");
+                    
+                    $.ajax({
+                        url: "/ForosISIS.web/webresources/Foro/PedirForo",
+                        type : "GET",
+                        contentType: 'application/json',
+                        data : { id : idForo},
+                    }).done(function(data) {
+                        //localStorage.setItem("titulo", data.titulo);
+                        localStorage.setItem("titulo", data.name);
+                        localStorage.setItem("idForo", data.id);
+                        //console.log("Mostrando foro con id: " + data.id + " con titulo: " + data.name);
+                        window.top.location = "/ForosISIS.web/index2.html";
+                    }, this).error(function(data) {
+                        alert("No se ha podido establecer la conexion con el servidor.");
+                    }, this);
                      //mostrar ventana de cargando foro
 
                      //localStorage con el id del foro
                      //localStorage con el titulo del foro
-                    window.top.location.href = "/ForosISIS.web/index2.html";  
+//                    window.top.location.href = "/ForosISIS.web/index2.html";  
                      //reenviar a index2
                  });
             }, 800);
