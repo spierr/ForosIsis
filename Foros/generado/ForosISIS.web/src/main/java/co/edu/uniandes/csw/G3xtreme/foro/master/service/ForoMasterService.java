@@ -101,10 +101,12 @@ public class ForoMasterService extends _ForoMasterService {
         
         public void cambiarEstadoTarea(long idTarea, Integer nuevoEstado) {
            List<TareaDTO> list = getTareasByForo();
-           for (int i = 0; i < list.size(); i++) {
+           boolean termino = false;
+           for (int i = 0; i < list.size() && !termino; i++) {
                 if(list.get(i).getId()== idTarea)
                 {
                     list.get(i).setEstado(nuevoEstado);
+                    termino = true;
                 }
             }
         }
