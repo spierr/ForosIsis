@@ -71,10 +71,15 @@ public class TareaService extends _TareaService {
         }
         return super.getTareas(page, maxRecords);
      }
-        
-     public void cambiarEstadoTarea(long idTarea, Integer nuevoEstado) {
-        tareaLogicService.getTarea(idTarea).setEstado(nuevoEstado);
-        tareaLogicService.updateTarea(tareaLogicService.getTarea(idTarea));
-         
+     
+        @GET
+        @Path("/cambiarEstadoTarea")
+        public void cambiarEstadoTarea() {
+           MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+           long idTarea = Long.parseLong(queryParams.getFirst("idTarea"));
+           int nuevoEstado = Integer.parseInt(queryParams.getFirst("estado"));
+           tareaLogicService.getTarea(idTarea).setEstado(nuevoEstado);
+           tareaLogicService.updateTarea(tareaLogicService.getTarea(idTarea));
+
         } 
 }

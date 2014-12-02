@@ -21,6 +21,8 @@
         <script>
             $(document).ready(function (){
                 var idForo = localStorage.getItem("idForo");
+                var idTarea = 0;
+                var estado = 0;
                 
                 $("#crearActividad").hide();
                 
@@ -47,6 +49,12 @@
                        $("#body-principal").append($(theTr));
                     });
                     
+                    $(".cambiarEstado").click(function (){
+                        idTarea = this.value;
+                        $("#temp").modal();
+                        console.log("yo");
+                    });
+                    
                     $(".notificar").click(function (){
                         var idNotificante = this.value;
                         console.log("notificando");
@@ -67,39 +75,19 @@
                     alert("No se ha podido establecer la conexion con el servidor.");
                 }, this);
                 
-                //------------------------GET ALL RESPONSABLES
-                
-//                $.ajax({
-//                    url: "/ForosISIS.web/webresources/Responsable/getAllResponsables",
-//                    type : "GET",
-//                    contentType: 'application/json',
-//                }).done(function(data) {
-//                    var theSelect = $("#responsableSelect");
-//                    $.each(data.records, function(index,value){
-//                       var option = $("<option>").attr("value",value.id).text(value.name);
-//                       $(theSelect).append($(option));
-//                       
-//                });
-                    
-                //-----------------------GET FASES BY FORO
-                
-//                $.ajax({
-//                    url: "/ForosISIS.web/webresources/Fase/getFasesByForo",
-//                    type : "GET",
-//                    contentType: 'application/json',
-//                    data : {idForo : localStorage.getItem("idForo")}
-//                }).done(function(data) {
-//                    var theSelect = $("#faseSelect");
-//                    $.each(data.records, function(index,value){
-//                       var option = $("<option>").attr("value",value.id).text(value.name);
-//                       $(theSelect).append($(option));
-//                       
-//                    });
-//                });
-                
-                //faseSelect
-                
-                //responsableSelect
+                $("#cambiarEstadoFinal").click(function(){
+                    estado = $("#label").val();
+                    $.ajax({
+                        url: "/ForosISIS.web/webresources/Tarea/cambiarEstadoTarea",
+                        type : "GET",
+                        contentType: 'application/json',
+                        data : { idForo : idForo, estado : estado, idTarea: idTarea },
+                    }).done(function(data) {
+                        //localStorage.setItem("titulo", data.titulo);
+                        //alert("Correo enviado!");
+                        window.top.location = "/ForosISIS.web/index2.html";
+                    });
+                });
                 
                 $("#crear").click(function (){
                    //parent.verTareasModal();
@@ -162,9 +150,28 @@
                     </table>
                 </div>
             </div> 
-            
-        </div>
+        </div> 
         
+        <div class="modal fade" id="temp">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+                        <label for="label">Estado</label>
+                        <input type="text" class="form-control" id="label" placeholder="1-100">
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="cambiarEstadoFinal">Cambiar Estado</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
         
     </body>
 </html> 

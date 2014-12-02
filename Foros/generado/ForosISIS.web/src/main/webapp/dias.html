@@ -26,7 +26,19 @@
             var eventsJson = [];
             var calendar;
             
+            function redirectFrame(url) {
+                $('#container').attr('src', url);
+                $('#container').css('height', ($(window).height() - $('#header').height() - 30) + 'px');
+            }
+            
             $(document).ready(function (){
+                $("#crearActividad").hide();
+                
+                $("#crear").click(function (){
+                   //parent.verTareasModal();
+                   redirectFrame("foroMaster.html");
+                   $("#crearActividad").toggle("slow");
+                });
                 
                 var idForo = localStorage.getItem("idForo");        
                 
@@ -125,7 +137,16 @@
     </head>
     <body>
         <div class="container">
-            <button style="margin-bottom: 20px;" class="btn btn-info btn-lg btn-block" id="crear"><span class="glyphicon glyphicon-check"></span> Crear Actividad</button>
+            <button style="margin-bottom: 20px;" class="btn btn-info btn-lg btn-block" id="crear"><span class="glyphicon glyphicon-check"></span> Crear/Modificar Actividad</button>
+            
+            <div class="panel panel-success" id="crearActividad">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Modificar o adicionar Actividades</h3>
+                </div>
+                <div class="panel-body">
+                  <iframe id="container" src="" style="width: 100%; height: 100%; border: 0; margin: 0;"></iframe> 
+                </div>
+            </div>
             
             <div class="page-header">
 

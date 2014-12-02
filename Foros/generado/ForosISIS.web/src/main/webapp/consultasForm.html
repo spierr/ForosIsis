@@ -24,9 +24,56 @@ and open the template in the editor.
           <script src="../../assets/js/html5shiv.js"></script>
           <script src="../../assets/js/respond.min.js"></script>
         <![endif]-->
+        <script>
+            var idForo = localStorage.getItem("idForo");
+            
+            $(document).ready(function(){
+                $("#resultadoPanel").hide();
+                $("#buscarTareaNombre").click(function (event){
+                   event.preventDefault();
+                   
+                   var nombre = $("#nombreTareaInput").val();
+                    $.ajax({
+                            url: "/ForosISIS.web/webresources/Tarea/buscarTareasNombre",
+                            type : "GET",
+                            contentType: 'application/json',
+                            data : { name : nombre },
+                        }).done(function(data) {
+                            if (data.records.length == 0){
+                                alert("No hay resultados!");
+                            }else{
+                                
+                            }
+                            //localStorage.setItem("titulo", data.titulo);
+                            
+                            console.log(data);
+                        },this).error(function(data) {
+                            alert("No se ha podido establecer la conexion con el servidor.");
+                        }, this);
+                    });
+            });
+            
+        </script>
     </head>
     <body>
         <div class="container">
+            
+            <div class="panel panel-success" id="resultadoPanel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Resultado
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped" style="margin-bottom: 0;">
+                        <thead>
+                            <tr id="tr-head"></tr>
+                        </thead>
+                        <tbody id="body-principal">
+                            <tr id="tr-body"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
             <div id="main">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -36,10 +83,10 @@ and open the template in the editor.
                         <form role="form">
                             <div class="form-group">
                                 <h3>Buscar tarea por nombre</h3>
-                                <label for="exampleInputEmail1">Nombre 
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="nombre">
+                                <label for="nombreTareaInput">Nombre 
+                                <input type="text" class="form-control" id="nombreTareaInput" placeholder="nombre">
                             </div>
-                            <button type="submit" class="btn btn-default">Buscar tarea por nombre</button>
+                            <button type="submit" class="btn btn-default" id="buscarTareaNombre">Buscar tarea por nombre</button>
                         </form>
                         
                         <hr>

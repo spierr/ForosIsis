@@ -99,5 +99,4 @@ public class ForoMasterService extends _ForoMasterService {
             return foroLogicService.getTareasByForo(idForo);
         }
         
-        
 }
