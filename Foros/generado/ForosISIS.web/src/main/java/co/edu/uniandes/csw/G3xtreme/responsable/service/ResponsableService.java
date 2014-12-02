@@ -68,7 +68,7 @@ public class ResponsableService extends _ResponsableService {
          InfoDTO a = new InfoDTO();
          try {
            boolean resp= responsableLogicService.enviarCorreoAResponsable(mensaje, idResp);
-           a.setExito("Se envió con éxito el mensaje.");
+           a.setExito("Se enviï¿½ con ï¿½xito el mensaje.");
            a.setError(!resp);
         } catch (Exception e) {
            a.setError("Error enviando el mensaje");
@@ -85,9 +85,9 @@ public class ResponsableService extends _ResponsableService {
     }
     
     @GET
-    @Path("Responsable/buscarResponsablesNombre")
+    @Path("/buscarResponsablesNombre")
         public ResponsablePageDTO getResponsablesPorNombre(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords) {
-        //Implementar lógica de búsqueda
+        //Implementar lï¿½gica de bï¿½squeda
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         String name = queryParams.getFirst("name");
         if (name != null && !name.isEmpty()) {
