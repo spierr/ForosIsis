@@ -99,15 +99,5 @@ public class ForoMasterService extends _ForoMasterService {
             return foroLogicService.getTareasByForo(idForo);
         }
         
-        public void cambiarEstadoTarea(long idTarea, Integer nuevoEstado) {
-           List<TareaDTO> list = getTareasByForo();
-           boolean termino = false;
-           for (int i = 0; i < list.size() && !termino; i++) {
-                if(list.get(i).getId()== idTarea)
-                {
-                    list.get(i).setEstado(nuevoEstado);
-                    termino = true;
-                }
-            }
-        }
+        
 }
