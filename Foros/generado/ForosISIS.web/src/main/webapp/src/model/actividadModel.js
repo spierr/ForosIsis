@@ -32,8 +32,41 @@ define(['model/_actividadModel'], function() {
 
  		validate: function(attrs,options){
             var validationMessage = "";
-            if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+            if(!attrs.name)
+            {
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.descripcion)
+            {
+                validationMessage = "La descripción no puede estar vacía";
+            }
+            if(!attrs.costo)
+            {
+                validationMessage = "El costo no puede estar vacío, si es 0 debe ponerse";
+            }
+            else
+            {
+                try{
+                var s=parseInt(attrs.costo);
+                if(s<0)
+                {
+                    validationMessage = "El costo no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El costo debe ser un número";
+            }
+            }
+            if(!attrs.fecha)
+            {
+                validationMessage = "Las fecha no puede estar vacía";
+            }
+            if(!attrs.lugar_actividadId)
+            {
+                validationMessage = "El lugar debe tener un id";
+            }
+            if(!attrs.expositor_actividadId)
+            {
+                validationMessage = "El expositor debe tener un id";
             }
             if(validationMessage.length>0){
                return validationMessage;

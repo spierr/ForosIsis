@@ -32,8 +32,29 @@ define(['model/_dia_InscripcionModel'], function() {
 
  		validate: function(attrs,options){
             var validationMessage = "";
-            if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+            if(!attrs.name)
+            {
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.fecha)
+            {
+                validationMessage = "La fecha no puede estar vacía";
+            }
+            if(!attrs.numInscritos)
+            {
+                validationMessage = "El número no puede estar vacío";
+            }
+            else
+            {
+                try{
+                var nu=parseInt(numInscritos);
+                if(nu<0)
+                {
+                    validationMessage = "El número no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El número de inscritos es inválido";
+            }
             }
             if(validationMessage.length>0){
                return validationMessage;

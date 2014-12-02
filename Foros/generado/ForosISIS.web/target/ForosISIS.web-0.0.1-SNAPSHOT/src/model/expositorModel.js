@@ -36,7 +36,7 @@ define(['model/_expositorModel'], function() {
                 validationMessage = "El nombre no puede ser vacio.";
             }
             if( attrs.costo && parseInt(attrs.costo) < 0){
-                validationMessage = "El costo debe ser un numero positivo";
+                validationMessage = "El costo debe ser un número positivo";
             }
             if(validationMessage.length>0){
                return validationMessage;

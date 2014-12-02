@@ -33,7 +33,32 @@ define(['model/_faseModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacio";
+            }
+            if(!attrs.fechaInicio && !attrs.fechaFin)
+            {
+                validationMessage = "Las fecha no puede estar vacía";
+            }
+            else
+            {
+                var startString = attrs.fechaInicio; //llega como: dd/mm/aaa
+                var splitersStart = startString.split("/");
+                var realStringDate = splitersStart[1] + "/" + splitersStart[0] + "/" + splitersStart[2];
+                var startHour = "00:00:00";
+                var finalString = realStringDate + " " + startHour;
+                var startDate = Date.parse(finalString);
+                
+                var startString2 = attrs.fechaFin; //llega como: dd/mm/aaa
+                var splitersStart2 = startString2.split("/");
+                var realStringDate2 = splitersStart2[1] + "/" + splitersStart2[0] + "/" + splitersStart2[2];
+                var startHour2 = "00:00:00";
+                var finalString2 = realStringDate2 + " " + startHour2;
+                var startDate2 = Date.parse(finalString2);
+                
+                if(startDate>=startDate2)
+                {
+                   validationMessage = "Las fechas son inválidas"; 
+                }
             }
             if(validationMessage.length>0){
                return validationMessage;

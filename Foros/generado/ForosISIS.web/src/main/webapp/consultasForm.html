@@ -29,6 +29,9 @@ and open the template in the editor.
             
             $(document).ready(function(){
                 $("#resultadoPanel").hide();
+                
+                //1
+                
                 $("#buscarTareaNombre").click(function (event){
                    event.preventDefault();
                    
@@ -39,15 +42,123 @@ and open the template in the editor.
                             contentType: 'application/json',
                             data : { name : nombre },
                         }).done(function(data) {
+                            $("#tr-head").empty();
+                            $("#body-principal").empty();
+                            
                             if (data.records.length == 0){
                                 alert("No hay resultados!");
                             }else{
                                 
+                                $("#tr-head").append($("<th>").text("Nombre"));
+                                $("#tr-head").append($("<th>").text("Descripcion"));
+                                $("#tr-head").append($("<th>").text("Estado"));
+                                $("#tr-head").append($("<th>").text("Responsable"));
+                                
+                                $.each(data.records, function(index,value){
+                                    var theTr = $("<tr>");
+                                    $(theTr).append("<td>" + value.name + "</td>");
+                                    $(theTr).append("<td>" + value.descripcion + "</td>");
+                                    $(theTr).append("<td>" + "<div class=\"progress\"><div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"" + value.estado + "\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + value.estado + "%\"><span class=\"sr-only\">" + value.estado + "% Complete</span></div></div></td>");
+                                    $(theTr).append("<td>" + value.responsable + "</td>");
+                                    $("#body-principal").append(theTr);
+                                });
                             }
                             //localStorage.setItem("titulo", data.titulo);
-                            
                             console.log(data);
+                            
+                            $("#resultadoPanel").show("slow");
                         },this).error(function(data) {
+                            $("#tr-head").empty();
+                            $("#tr-body").empty();
+                            alert("No se ha podido establecer la conexion con el servidor.");
+                        }, this);
+                    });
+                    
+                //2
+                
+                $("#buscarResponsableNombre").click(function (event){
+                    event.preventDefault();
+                    
+                    var nombre = $("#nombreResponsableInput").val();
+                    
+                    $.ajax({
+                        url: "/ForosISIS.web/webresources/Responsable/buscarResponsablesNombre",
+                        type : "GET",
+                        contentType: 'application/json',
+                        data : { name : nombre },
+                    }).done(function(data) {
+                        $("#tr-head").empty();
+                        $("#body-principal").empty();
+
+                        if (data.records.length == 0){
+                            alert("No hay resultados!");
+                        }else{
+
+                            $("#tr-head").append($("<th>").text("Nombre"));
+                            $("#tr-head").append($("<th>").text("Descripcion"));
+                            $("#tr-head").append($("<th>").text("Estado"));
+                            $("#tr-head").append($("<th>").text("Responsable"));
+
+                            $.each(data.records, function(index,value){
+                                var theTr = $("<tr>");
+                                $(theTr).append("<td>" + value.name + "</td>");
+                                $(theTr).append("<td>" + value.descripcion + "</td>");
+                                $(theTr).append("<td>" + "<div class=\"progress\"><div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"" + value.estado + "\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + value.estado + "%\"><span class=\"sr-only\">" + value.estado + "% Complete</span></div></div></td>");
+                                $(theTr).append("<td>" + value.responsable + "</td>");
+                                $("#body-principal").append(theTr);
+                            });
+                        }
+                        //localStorage.setItem("titulo", data.titulo);
+                        console.log(data);
+
+                        $("#resultadoPanel").show("slow");
+                    },this).error(function(data) {
+                        $("#tr-head").empty();
+                        $("#tr-body").empty();
+                        alert("No se ha podido establecer la conexion con el servidor.");
+                    }, this);
+                });
+                
+                //3
+                
+                $("#buscarTareaNombreResponsable").click(function (event){
+                   event.preventDefault();
+                   
+                   var nombre = $("#tareaNombreResponsable").val();
+                    $.ajax({
+                            url: "/ForosISIS.web/webresources/Tarea/darTareasResponsable",
+                            type : "GET",
+                            contentType: 'application/json',
+                            data : { idResponsable : nombre },
+                        }).done(function(data) {
+                            $("#tr-head").empty();
+                            $("#body-principal").empty();
+                            
+                            if (data.records.length == 0){
+                                alert("No hay resultados!");
+                            }else{
+                                
+                                $("#tr-head").append($("<th>").text("Nombre"));
+                                $("#tr-head").append($("<th>").text("Descripcion"));
+                                $("#tr-head").append($("<th>").text("Estado"));
+                                $("#tr-head").append($("<th>").text("Responsable"));
+                                
+                                $.each(data.records, function(index,value){
+                                    var theTr = $("<tr>");
+                                    $(theTr).append("<td>" + value.name + "</td>");
+                                    $(theTr).append("<td>" + value.descripcion + "</td>");
+                                    $(theTr).append("<td>" + "<div class=\"progress\"><div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"" + value.estado + "\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + value.estado + "%\"><span class=\"sr-only\">" + value.estado + "% Complete</span></div></div></td>");
+                                    $(theTr).append("<td>" + value.responsable + "</td>");
+                                    $("#body-principal").append(theTr);
+                                });
+                            }
+                            //localStorage.setItem("titulo", data.titulo);
+                            console.log(data);
+                            
+                            $("#resultadoPanel").show("slow");
+                        },this).error(function(data) {
+                            $("#tr-head").empty();
+                            $("#tr-body").empty();
                             alert("No se ha podido establecer la conexion con el servidor.");
                         }, this);
                     });
@@ -68,7 +179,7 @@ and open the template in the editor.
                             <tr id="tr-head"></tr>
                         </thead>
                         <tbody id="body-principal">
-                            <tr id="tr-body"></tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -94,10 +205,10 @@ and open the template in the editor.
                         <form role="form">
                             <div class="form-group">
                                 <h3>Buscar responsable por nombre</h3>
-                                <label for="exampleInputEmail1">Nombre 
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="nombre">
+                                <label for="nombreResponsableInput">Nombre 
+                                <input type="text" class="form-control" id="nombreResponsableInput" placeholder="nombre">
                             </div>
-                            <button type="submit" class="btn btn-default">Buscar responsable por nombre</button>
+                            <button type="submit" class="btn btn-default" id="buscarResponsableNombre">Buscar responsable por nombre</button>
                         </form>
                         
                         <hr>
@@ -105,10 +216,10 @@ and open the template in the editor.
                         <form role="form">
                             <div class="form-group">
                                 <h3>Buscar tareas por nombre responsable</h3>
-                                <label for="exampleInputEmail1">Nombre Responsable
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="nombre">
+                                <label for="tareaNombreResponsable">Nombre Responsable
+                                <input type="text" class="form-control" id="tareaNombreResponsable" placeholder="nombre">
                             </div>
-                            <button type="submit" class="btn btn-default">Buscar tareas</button>
+                            <button type="submit" class="btn btn-default" id="buscarTareaNombreResponsable">Buscar tareas</button>
                         </form>
                     </div>
                 </div> 

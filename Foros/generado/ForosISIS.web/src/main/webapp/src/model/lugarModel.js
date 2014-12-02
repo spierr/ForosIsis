@@ -36,7 +36,7 @@ define(['model/_lugarModel'], function() {
                 validationMessage = "El nombre no puede ser vacio.";
             }
             if(!attrs.direccion){
-                validationMessage = "La diección no puede ser vacia.";
+                validationMessage = "La direcciÃ³n no puede ser vacia.";
             }
             if(!attrs.costo){
                 validationMessage = "El costo no puede ser vacio";

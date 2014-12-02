@@ -47,7 +47,7 @@ define(['model/_responsableModel'], function() {
             if(!attrs.tipo){
                 validationMessage = "El tipo no puede ser vacio.";
             }
-            if(attrs.rolrespId.equals("None"))
+            if(!attrs.rolrespId)
             {
                 validationMessage = "Se debe especificar el rol del responsable.";
             }

@@ -33,7 +33,26 @@ define(['model/_foroModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacio";
+            }
+            if(!attrs.tema){
+                validationMessage = "El tema no puede estar vacío";
+            }
+            if(!attrs.presupuesto)
+            {
+                validationMessage = "El presupuesto no puede estar vacío, si es 0 debe ponerse";
+            }
+            else
+            {
+                try{
+                var n=parseInt(attrs.presupuesto);
+                if(n<0)
+                {
+                    validationMessage = "El presupuesto no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El presupuesto debe ser un número";
+            }
             }
             if(validationMessage.length>0){
                return validationMessage;

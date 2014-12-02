@@ -32,8 +32,62 @@ define(['model/_tareaModel'], function() {
 
  		validate: function(attrs,options){
             var validationMessage = "";
-            if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+            if(!attrs.name)
+            {
+                validationMessage = "El nombre no puede estar vacío";
+            }
+            if(!attrs.responsable)
+            {
+               validationMessage = "El nombre del responsable no puede estar vacío."; 
+            }
+            if(!attrs.fechaInicio && !attrs.fechaFin)
+            {
+                validationMessage = "Las fecha no puede estar vacía";
+            }
+            else
+            {
+                var startString = attrs.fechaInicio; //llega como: dd/mm/aaa
+                var splitersStart = startString.split("/");
+                var realStringDate = splitersStart[1] + "/" + splitersStart[0] + "/" + splitersStart[2];
+                var startHour = "00:00:00";
+                var finalString = realStringDate + " " + startHour;
+                var startDate = Date.parse(finalString);
+                
+                var startString2 = attrs.fechaFin; //llega como: dd/mm/aaa
+                var splitersStart2 = startString2.split("/");
+                var realStringDate2 = splitersStart2[1] + "/" + splitersStart2[0] + "/" + splitersStart2[2];
+                var startHour2 = "00:00:00";
+                var finalString2 = realStringDate2 + " " + startHour2;
+                var startDate2 = Date.parse(finalString2);
+                
+                if(startDate>=startDate2)
+                {
+                   validationMessage = "Las fechas son inválidas"; 
+                }
+            }
+            if(!attrs.descripcion)
+            {
+                validationMessage = "Las descripción no puede estar vacía";
+            }
+            if(!attrs.estado)
+            {
+                validationMessage = "El estado no puede estar vacío";
+            }
+            else
+            {
+                try{
+                var estado=parseInt(attrs.estado);
+                if(0>estado || estado>100)
+                {
+                    validationMessage = "El estado debe ser un número entre 0 y 100";
+                }
+            }catch(e){
+                validationMessage = "El estado debe ser un número";
+            }
+            }
+            if(!attrs.responsable_tareaId)
+            {
+                validationMessage = "El responsable debe tener un id";
             }
             if(validationMessage.length>0){
                return validationMessage;

@@ -33,7 +33,71 @@ define(['model/_estadisticasModel'], function() {
  		validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacio";
+            }
+            if(!attrs.totalInscritos)
+            {
+                validationMessage = "El total de inscritos no puede estar vacío";
+            }
+            else
+            {
+                try{
+                var n=parseInt(attrs.totalInscritos);
+                if(n<0)
+                {
+                    validationMessage = "El total de inscritos no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El total de inscritos debe ser un número";
+            }
+            }
+            if(!attrs.asistentesTiempoReal)
+            {
+                validationMessage = "El total de asistentes no puede estar vacío";
+            }
+            else
+            {
+                try{
+                var n=parseInt(attrs.asistentesTiempoReal);
+                if(n<0)
+                {
+                    validationMessage = "El total de asistentes no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El total de asistentes debe ser un número";
+            }
+            }
+            if(!attrs.visitasAPlataformaInscripcion)
+            {
+                validationMessage = "El total de visitas no puede estar vacío";
+            }
+            else
+            {
+                try{
+                var n=parseInt(attrs.visitasAPlataformaInscripcion);
+                if(n<0)
+                {
+                    validationMessage = "El total de visitas no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El total de visitas debe ser un número";
+            }
+            }
+            if(!attrs.memoria)
+            {
+                validationMessage = "La memoria no puede estar vacía";
+            }
+            else
+            {
+                try{
+                var n=parseInt(attrs.memoria);
+                if(n<0)
+                {
+                    validationMessage = "El total de memoria no puede ser negativo";
+                }
+            }catch(e){
+                validationMessage = "El total de memoria debe ser un número";
+            }
             }
             if(validationMessage.length>0){
                return validationMessage;
