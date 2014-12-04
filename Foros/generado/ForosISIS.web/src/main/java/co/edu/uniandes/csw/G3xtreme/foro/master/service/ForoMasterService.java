@@ -95,7 +95,7 @@ public class ForoMasterService extends _ForoMasterService {
             //Implementar lógica de búsqueda
             MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
             String idForo = queryParams.getFirst("idForo");
-           
+           System.out.println(idForo);
             return foroLogicService.getTareasByForo(idForo);
         }
         

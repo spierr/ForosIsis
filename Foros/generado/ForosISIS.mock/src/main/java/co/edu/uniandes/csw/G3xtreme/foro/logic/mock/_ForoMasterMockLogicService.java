@@ -36,10 +36,10 @@ import co.edu.uniandes.csw.G3xtreme.foro.logic.dto.ForoDTO;
 import co.edu.uniandes.csw.G3xtreme.foro.logic.api.IForoLogicService;
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.api._IForoMasterLogicService;
 import co.edu.uniandes.csw.G3xtreme.foro.master.logic.dto.ForoMasterDTO;
-import co.edu.uniandes.csw.G3xtreme.fase.logic.api.IFaseLogicService;
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.api.IActividadLogicService;
-import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
+import co.edu.uniandes.csw.G3xtreme.fase.logic.api.IFaseLogicService;
 import co.edu.uniandes.csw.G3xtreme.actividad.logic.dto.ActividadDTO;
+import co.edu.uniandes.csw.G3xtreme.fase.logic.dto.FaseDTO;
 import javax.inject.Inject;
 
 
@@ -47,9 +47,9 @@ public abstract class _ForoMasterMockLogicService implements _IForoMasterLogicSe
 
     protected static ArrayList<ForoMasterDTO> foroMasterDtosList = new ArrayList<ForoMasterDTO>() ;
     @Inject
-    protected IFaseLogicService fasePersistance;
-    @Inject
     protected IActividadLogicService actividadPersistance;
+    @Inject
+    protected IFaseLogicService fasePersistance;
     @Inject
     protected IForoLogicService foroPersistance;
 

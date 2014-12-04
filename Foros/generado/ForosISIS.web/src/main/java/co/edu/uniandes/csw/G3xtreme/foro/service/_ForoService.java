@@ -64,7 +64,7 @@ public abstract class _ForoService {
 	
 	@GET
 	public ForoPageDTO getForos(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords){
-            return foroLogicService.getForos(page, maxRecords);
+		return foroLogicService.getForos(page, maxRecords);
 	}
 	
 	@GET

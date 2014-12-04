@@ -41,9 +41,9 @@ define(['model/_responsableModel'], function() {
             {
                 alidationMessage = "El correo no puede ser vacio";
             }
-            if(!attrs.correo.contains("@")&& !attrs.correo.contains(".")){
-                validationMessage = "El correo debe ser del formato: algo@algo.com ";
-            }
+//            if(!attrs.correo.contains("@")&& !attrs.correo.contains(".")){
+//                validationMessage = "El correo debe ser del formato: algo@algo.com ";
+//            }
             if(!attrs.tipo){
                 validationMessage = "El tipo no puede ser vacio.";
             }

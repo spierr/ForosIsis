@@ -41,9 +41,9 @@ define(['model/_lugarModel'], function() {
             if(!attrs.costo){
                 validationMessage = "El costo no puede ser vacio";
             }
-            if(!attrs.direccion.contains("#")||!attrs.direccion.contains("-")){
-                validationMessage = " La direccion debe ser del formato calle/carrera numero # numero-numero.";
-            }
+//            if(!attrs.direccion.contains("#")||!attrs.direccion.contains("-")){
+//                validationMessage = " La direccion debe ser del formato calle/carrera numero # numero-numero.";
+//            }
             if(parseInt(attrs.costo)< 0 )
             {
                 validationMessage = "El costo debe ser un numero positivo.";

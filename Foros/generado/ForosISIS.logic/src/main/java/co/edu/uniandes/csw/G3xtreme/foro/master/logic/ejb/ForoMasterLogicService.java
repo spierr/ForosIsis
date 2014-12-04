@@ -58,6 +58,7 @@ public class ForoMasterLogicService extends _ForoMasterLogicService implements I
         List<FaseDTO> fases= foroMasterPersistance.getForofase_foroEntityList(Long.parseLong(idForo));
         List<TareaDTO> tareas = new ArrayList<TareaDTO>();
         for (int i = 0; i < fases.size(); i++) {
+            if(  faseMasterPersistance.getFasetarea_faseEntityList(fases.get(i).getId())!=null)
             tareas.addAll(faseMasterPersistance.getFasetarea_faseEntityList(fases.get(i).getId()));
         }
         return tareas;
